@@ -8,10 +8,10 @@ i18next
         debug: true,
         resources: {
             en: {
-                translations: require('../../public/en/translations.json') 
+                translations: require('./en/translations.json') 
             },
             ta: {
-                translations: require('../../public/ta/translations.json')
+                translations: require('./ta/translations.json')
             }
         },
         ns: ['translations'],

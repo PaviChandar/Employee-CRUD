@@ -1,4 +1,5 @@
 import { EmployeeInput } from "../../shared/interface/employee.interface";
+import { UserInput } from "../../shared/interface/user.interface";
 import * as types from "../action/action-type"
 
 export const registerEmployee = (employee: EmployeeInput) => ({
@@ -22,4 +23,18 @@ export const retreiveAllEmployee = () => ({
 export const retreiveEmployee = (employee: EmployeeInput) => ({
     type: types.GET_EMPLOYEE,
     payload: employee
+})
+
+export const userLoggedIn = (user: UserInput) => ({
+    type: types.LOGIN_USER,
+    payload: user
+})
+
+export const userRegistered = (user: UserInput) => ({
+    type: types.REGISTER_USER,
+    payload: user
+})
+
+export const isLogin = () => ({
+    type: types.IS_LOGIN
 })

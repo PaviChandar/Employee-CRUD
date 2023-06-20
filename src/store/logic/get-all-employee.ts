@@ -1,6 +1,7 @@
 import { createLogic } from "redux-logic";
 
-export const getAllEmployee = () => createLogic({
+const getAllEmployee =  createLogic({
     type: 'GET',
-    
 })
+
+export default getAllEmployee

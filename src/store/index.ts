@@ -5,8 +5,8 @@ import { createLogicMiddleware } from "redux-logic";
 import thunk from "redux-thunk";
 
 import rootReducer from "./reducer/root-reducer";
+import rootLogic from "../store/logic/index"
 
-let rootLogic
 const deps = {
     httpClient: axios
 }

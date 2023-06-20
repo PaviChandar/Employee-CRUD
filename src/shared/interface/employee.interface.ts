@@ -20,7 +20,7 @@ export interface Employees {
 
 export interface EmployeeState {
     employee: EmployeeInput
-    employees: EmployeeInput[]
+    employees: Array<EmployeeInput>
 }
 
 export type EmployeeType = Employee & Employees

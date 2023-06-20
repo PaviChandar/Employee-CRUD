@@ -1,14 +1,12 @@
-import { Button } from '@mui/material'
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
-import UserContainer from '../../container/user-container'
+import { Button } from "@mui/material"
+import { useState } from "react"
+import { useNavigate } from "react-router"
 
-const Login = () => {
-
-    const { loginUser } = UserContainer()
+const SignUp = () => {
 
     const navigate = useNavigate()
     const [credentials, setCredentials] = useState({
+        username:'',
         email:'',
         password:''
     })
@@ -16,25 +14,20 @@ const Login = () => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
         const { name, value } = e.target
-        setCredentials((prev) => ({ ...prev, [name] :value }))
-    }
-
-    const handleLogin = () => {
-        console.log("inside handle login")
-        loginUser(credentials)
+        setCredentials((prev) => ({...prev, [name]: value}))
     }
 
     return (
         <div>
             <form>
                 <input type="text" placeholder="email" name="email" value={credentials.email} onChange={(e) => handleChange(e)} />
+                <input type="text" placeholder="username" name="username" value={credentials.username} onChange={(e) => handleChange(e)} />
                 <input type="password" placeholder="password" name="password" value={credentials.password} onChange={(e) => handleChange(e)} />
             </form>
-            <Button onClick={() => handleLogin()} >Login</Button>
-            <h3>If not an user, please sign-up</h3>
-            <Button onClick={() => navigate('/signup')} >SignUp</Button>
+            <Button>Sign Up</Button>
+            <Button onClick={() => navigate('/login')} >Login</Button>
         </div>
     )
 }
 
-export default Login
+export default SignUp
