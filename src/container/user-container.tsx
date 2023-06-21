@@ -5,11 +5,17 @@ const UserContainer = () => {
     const dispatch = useDispatch()
 
     const loginUser = (user: UserInput) => {
-        dispatch({ type: 'LOGIN', payload: user})
+        console.log("inside log cont")
+        dispatch({ type: 'LOGIN', payload: user })
+    }
+
+    const registerUser = (user: UserInput) => {
+        dispatch({ type: 'SIGN_UP', payload: user })
     }
 
     return {
-        loginUser
+        loginUser,
+        registerUser
     }
 }
 

@@ -1,0 +1,41 @@
+.signUpContainer {
+    text-align: center;
+}
+
+.signUpInputContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 180px;
+}
+
+.signUpInput {
+    /* width: 100px; */
+    margin-bottom: 10px;
+}
+
+.signUpButton {
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+    margin-left: -40px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.signUpLoginButton {
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+    margin-left: 40px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+}
