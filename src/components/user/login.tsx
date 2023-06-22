@@ -1,12 +1,11 @@
 import { Button } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
+
 import UserContainer from '../../container/user-container'
-import { User } from '../../shared/interface/user.interface'
-import GetToken from '../../shared/utils/get-token'
-import getToken from '../../shared/utils/get-token'
 import { validateLogin } from '../../shared/validation/validate'
+import "../../assets/login.css"
 
 const Login = () => {
 
@@ -19,7 +18,6 @@ const Login = () => {
     })
     const [error, setError] = useState<any>(false)
     const [submit, setSubmit] = useState(false)
-    const [success, setSuccess] = useState(false)
 
     // const user = useSelector((state: User) => state.userData)
     // console.log("user from state : ", user)
@@ -36,41 +34,41 @@ const Login = () => {
         setSubmit(true)
         if(Object.keys(error).length === 0 && submit) {
             loginUser(credentials)
-            setSuccess(true)
+            if (localStorage.getItem('token')) {
+                if (localStorage.getItem('login') === 'true') {
+                    alert("Successfully admin logged in!")
+                    navigate('/admin')
+                } else {
+                    alert("Successfully user logged in!")
+                    navigate('/')
+                }
+            }
         }
     }
 
-    useEffect(() => {
-        console.log("inside use effect")
-        if(localStorage.getItem('token')) {
-            console.log("inside main if")
-            if(localStorage.getItem('token') === 'true') {
-                console.log("inside if")
-                alert("Admin logged-in successfully!")
-                navigate('/admin')
-            } else {
-                console.log("inside else")
-                alert("User logged-in successfully!")
-                navigate('/')
-            }
-        }
-    }, [success, navigate])
-
     return (
-        <div>
-            <form>
-                <div>
+        <div className="loginContainer">
+            <form className="loginInputContainer">
+                <div className="loginInput">
                     <input type="text" placeholder="email" name="email" value={credentials.email} onChange={(e) => handleChange(e)} />
-                    <span>{error.email}</span>
+                    <span className='error'>{error.email}</span>
                 </div>
-                <div>
+                <div className="loginInput">
                     <input type="password" placeholder="password" name="password" value={credentials.password} onChange={(e) => handleChange(e)} />
-                    <span>{error.password}</span>
+                    <span className="error" >{error.password}</span>
                 </div>
             </form>
-            <Button onClick={() => handleLogin()} >Login</Button>
-            <h3>If not an user, please sign-up</h3>
-            <Button onClick={() => navigate('/signup')} >SignUp</Button>
+                <Button color='secondary' sx={{backgroundColor: "ButtonHighlight"}}
+                    onClick={() => handleLogin()} 
+                >
+                    Login
+                </Button>
+                <h3>If not an user, please sign-up</h3>
+                <Button color='secondary' sx={{backgroundColor: "ButtonShadow"}}
+                    onClick={() => navigate('/signup')} 
+                >
+                    SignUp
+                </Button>
         </div>
     )
 }

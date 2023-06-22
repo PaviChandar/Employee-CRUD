@@ -38,22 +38,31 @@ const SignUp = () => {
 
     return (
         <div className="signUpContainer" >
+            <h1>Sign-up new user</h1>
             <form className="signUpInputContainer" >
                 <div className="signUpInput">
                     <input type="text" placeholder="email" name="email" value={credentials.email} onChange={(e) => handleChange(e)} />
-                    <span>{error.email}</span>
+                    <span className="error">{error.email}</span>
                 </div>
                 <div className="signUpInput" >
                     <input type="text" placeholder="username" name="username" value={credentials.username} onChange={(e) => handleChange(e)} />
-                    <span>{error.username}</span>
+                    <span className="error">{error.username}</span>
                 </div>
                 <div className="signUpInput" >
                     <input type="password" placeholder="password" name="password" value={credentials.password} onChange={(e) => handleChange(e)} />
-                    <span>{error.password}</span>
+                    <span className="error">{error.password}</span>
                 </div>
             </form>
-            <Button onClick={() => handleSignUp()} className="signUpButton">Sign Up</Button>
-            <Button onClick={() => navigate('/login')} className="signUpLoginButton">Login</Button>
+            <Button color="info" variant="contained" sx={{backgroundColor: "black", marginRight: "10px", marginLeft: "-15px"}}
+                onClick={() => handleSignUp()}
+            >
+                Sign Up
+            </Button>
+            <Button color="info" variant="contained" sx={{backgroundColor: "black"}}
+                onClick={() => navigate('/login')}
+            >
+                Login
+            </Button>
         </div>
     )
 }

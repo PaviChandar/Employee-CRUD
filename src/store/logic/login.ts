@@ -8,7 +8,6 @@ const loginUser: any = createLogic({
         const user = action.payload
         userLogin(user)
             .then(function (response) {
-                console.log("res from log : ", response.data.data)
                 dispatch(userLoggedIn(response.data.data))
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('login', response.data.data.login)

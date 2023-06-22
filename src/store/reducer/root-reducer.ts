@@ -3,8 +3,8 @@ import { employeeReducer } from "./employee-reducer";
 import { userReducer } from "./user-reducer";
 
 const rootReducer = combineReducers({
-    employeeReducer : employeeReducer,
-    userReducer: userReducer
+    employeeData : employeeReducer,
+    userData: userReducer
 })
 
 export default rootReducer

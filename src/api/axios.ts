@@ -5,8 +5,8 @@ const axiosInstance = axios.create({
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      }
- })
+    }
+})
 
 axiosInstance.interceptors.response.use(
     function (response) {
@@ -16,7 +16,7 @@ axiosInstance.interceptors.response.use(
     
     function (error) {
         const response = error.response
-        if (response.status == 401) {
+        if (response.status === 401) {
             alert("Sorry!!something went wrong!!")
         }
 

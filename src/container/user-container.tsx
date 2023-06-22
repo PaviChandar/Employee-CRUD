@@ -5,7 +5,6 @@ const UserContainer = () => {
     const dispatch = useDispatch()
 
     const loginUser = (user: UserInput) => {
-        console.log("inside log cont")
         dispatch({ type: 'LOGIN', payload: user })
     }
 
