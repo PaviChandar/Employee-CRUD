@@ -5,8 +5,42 @@ import { useNavigate } from 'react-router'
 import UserContainer from '../../container/user-container'
 import { validateLogin } from '../../shared/validation/validate'
 import "../../assets/login.css"
+import { IUserInput } from '../../shared/interface/user.interface'
 
-const Login = () => {
+// interface LoginProps  {
+//     loginHandler: () => void,
+//     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
+//     someState: IUserInput
+// }
+
+// const Login: React.FC<LoginProps> = ({ loginHandler, handleChange,someState }) => {
+//     const navigate = useNavigate()
+
+//     return (
+//         <div className="loginContainer" >
+//             <form className='loginInputContainer'>
+//                 <input type="text" placeholder="email" name="email" onChange={(e) => handleChange(e)} value={someState.email}  required/>
+//                 <input type="password" placeholder="password" name="password" onChange={(e) => handleChange(e)} value={someState.password} required />
+//             </form>
+//             <Button color='secondary' sx={{backgroundColor: "ButtonHighlight"}}
+//                 onClick={loginHandler} 
+//                 >
+//                     Login
+//             </Button>
+//                 <h3>If not an user, please sign-up</h3>
+//             <Button color='secondary' sx={{backgroundColor: "ButtonShadow"}}
+//                 onClick={() => navigate('/signup')} 
+//                 >
+//                     SignUp
+//             </Button>
+//         </div>
+//     )
+// }
+
+// export default Login
+
+
+const LoginComponent = () => {
 
     const { loginUser } = UserContainer()
 
@@ -67,6 +101,7 @@ const Login = () => {
                 </Button>
         </div>
     )
+
 }
 
-export default Login
+export default LoginComponent

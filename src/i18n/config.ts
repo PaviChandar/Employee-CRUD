@@ -22,8 +22,8 @@ i18next
         resources: {
             en: {
                 // translations: require(process.env.PUBLIC_URL + '/en/translations.json') 
-                // translations: require('../../public/en/translations.json') 
-                translations: require('Users/pavithra.chandar/employee-crud/public/en/translations.json') 
+                translations: require('./en/translations.json') 
+                // translations: require('Users/pavithra.chandar/employee-crud/public/en/translations.json') 
             }
         },
         ns: ['translations'],
