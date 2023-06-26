@@ -1,25 +1,25 @@
-export interface UserInput {
+export interface IUserInput {
     email: string,
     password: string
     username?: string
 }
 
-export interface UserState {
-    user?: UserInput;
-    users?: Array<UserInput>
+export interface IUserState {
+    user?: IUserInput;
+    users?: Array<IUserInput>
     login?: boolean
 }
 
-export interface User {
-    userData: any;
+export interface IUser {
+    userData: any; //array
     type: string;
-    payload: UserInput
+    payload: IUserInput
 }
 
-export interface Users {
+export interface IUsers {
     userData: any;
     type: string;
-    payload: UserInput[]
+    payload: IUserInput[]
 }
 
-export type UserType = User
+export type IUserType = IUser

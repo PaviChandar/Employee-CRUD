@@ -1,4 +1,4 @@
-import { EmployeeType } from "../../shared/interface/employee.interface"
+import { IEmployeeState, IEmployeeType } from "../../shared/interface/employee.interface"
 import * as types from "../action/action-type"
 
 const initialState = {
@@ -12,7 +12,8 @@ const initialState = {
     }
 }
 
-export const employeeReducer = (state = initialState, action: EmployeeType) => {
+export const employeeReducer = (state:IEmployeeState = initialState, action: IEmployeeType): IEmployeeState => {
+    console.log("inside reducer")
     switch(action.type) {
         case types.ADD_EMPLOYEE:
             return {
@@ -35,10 +36,12 @@ export const employeeReducer = (state = initialState, action: EmployeeType) => {
                 employee: action.payload
             }
         case types.GET_ALL_EMPLOYEE:
+            console.log("inside getall red", action.payload)
+            console.log("inside getall  red data", action.employeeData)
             return {
                 ...state,
                 employees: action.payload
-            }
+            }            
         default:
             return state
     }

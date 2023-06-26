@@ -1,4 +1,4 @@
-export interface EmployeeInput {
+export interface IEmployeeInput {
     id: number
     name: string
     age: number
@@ -6,21 +6,21 @@ export interface EmployeeInput {
     salary: number
 }
 
-export interface Employee {
+export interface IEmployee {
+    employeeData: any //array
+    type: string
+    payload: IEmployeeInput
+}
+
+export interface IEmployees {
     employeeData: any
     type: string
-    payload: EmployeeInput
+    payload: IEmployeeInput[]
 }
 
-export interface Employees {
-    employeeData: any
-    type: string
-    payload: EmployeeInput[]
+export interface IEmployeeState {
+    employee?: IEmployeeInput
+    employees?: Array<IEmployeeInput>
 }
 
-export interface EmployeeState {
-    employee: EmployeeInput
-    employees: Array<EmployeeInput>
-}
-
-export type EmployeeType = Employee & Employees
+export type IEmployeeType = IEmployee & IEmployees

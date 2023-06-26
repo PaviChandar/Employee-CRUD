@@ -6,7 +6,7 @@ function ValidateSession() {
 
     const ValidateSession = () => {
         
-        let url = window.location.href
+        let url = window.location.href //not advisable
         if(url.indexOf('login') > -1 || url.indexOf('sign-up') > -1) {
             return true
         }

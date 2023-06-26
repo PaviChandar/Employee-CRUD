@@ -1,7 +1,7 @@
-import { UserInput, UserState, UserType } from "../../shared/interface/user.interface"
+import { IUserInput, IUserState, IUserType } from "../../shared/interface/user.interface"
 import * as types from "../action/action-type"
 
-const initialState: UserState| UserInput = {
+const initialState: IUserState| IUserInput = {
     users:[],
     user: {
         email:'',
@@ -11,7 +11,7 @@ const initialState: UserState| UserInput = {
     login: false
 }
 
-export const userReducer = (state: UserState= initialState, action: UserType) => {
+export const userReducer = (state: IUserState= initialState, action: IUserType) => {
     switch(action.type) {
         case types.LOGIN_USER:
             return {

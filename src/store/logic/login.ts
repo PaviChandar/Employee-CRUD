@@ -1,5 +1,6 @@
 import { createLogic } from "redux-logic"
-import { userLogin } from "../../api/api"
+
+import { userLogin } from "../../api/user-resource"
 import { isLogin, userLoggedIn } from "../action/action"
 
 const loginUser: any = createLogic({
@@ -12,12 +13,10 @@ const loginUser: any = createLogic({
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('login', response.data.data.login)
                 dispatch(isLogin())
-                // done()
             })
             .catch(function (error) {
                 console.log("Error from login response : ", error)
                 alert("Incorrect credentials")
-                // done()
             })
             done()
     }

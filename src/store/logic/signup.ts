@@ -1,5 +1,5 @@
 import { createLogic } from "redux-logic";
-import { userRegister } from "../../api/api";
+import { userRegister } from "../../api/user-resource";
 import { userRegistered } from "../action/action";
 
 const signUpUser: any = createLogic({

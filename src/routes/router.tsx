@@ -1,13 +1,28 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Navigate, PathRouteProps, IndexRouteProps } from "react-router-dom"
+
+import Admin from "../components/admin/home"
 import AdminHome from "../components/admin/home"
 import UserHome from "../components/user/home"
 import Login from "../components/user/login"
 import SignUp from "../components/user/sign-up"
 import ValidateSession from "../shared/validation/validate-session"
 
-const Router = () => {
+type Props = {
+    children: PathRouteProps | IndexRouteProps | any
+}
 
-    // ValidateSession()
+const Router = () => {
+    const login = localStorage.getItem('login')
+    
+    const ProtectedRoutes = ({ children }: Props) => {    
+        return login ? children : <Navigate to='/admin' />
+    }
+
+    const PrivateRoutes = ({ children }: Props) => {    
+        return login ? children : <Navigate to='/' />
+    }
+
+    ValidateSession()
 
     return (
         <>
@@ -15,8 +30,24 @@ const Router = () => {
                 <Route path='/login' element={<Login />} />
                 <Route path='/signup' element={<SignUp />} />
 
-                <Route path='/admin' element={<AdminHome />} />
-                <Route path='/' element={<UserHome />} />
+                <Route path='/admin' element= {
+                    <PrivateRoutes>
+                        <AdminHome />
+                    </PrivateRoutes>
+                } >
+                    <Route path='' element= {
+                        <PrivateRoutes>
+                            <Admin />
+                        </PrivateRoutes>
+                } />
+                </Route>
+
+                <Route path='/' element= {
+                    <ProtectedRoutes>
+                        <UserHome />
+                    </ProtectedRoutes>
+                } />
+
             </Routes>
         </>
     )

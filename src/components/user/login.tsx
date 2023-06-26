@@ -1,6 +1,5 @@
 import { Button } from '@mui/material'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
 import UserContainer from '../../container/user-container'
@@ -18,9 +17,6 @@ const Login = () => {
     })
     const [error, setError] = useState<any>(false)
     const [submit, setSubmit] = useState(false)
-
-    // const user = useSelector((state: User) => state.userData)
-    // console.log("user from state : ", user)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()

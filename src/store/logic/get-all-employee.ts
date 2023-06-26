@@ -1,5 +1,5 @@
 import { createLogic } from "redux-logic";
-import { getEmployees } from "../../api/api";
+import { getEmployees } from "../../api/admin-resource";
 import { retreiveAllEmployee } from "../action/action";
 
 const getAllEmployee =  createLogic({
@@ -7,7 +7,7 @@ const getAllEmployee =  createLogic({
     async process({ action }: any, dispatch, done) {
         getEmployees()
             .then(function (response) {
-                console.log("res data from getall : ", response.data)
+                console.log("res data from getall : ", response.data.data)
                 dispatch(retreiveAllEmployee())
             })
             .catch(function (error) {
