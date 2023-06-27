@@ -1,6 +1,8 @@
+import { red } from "@mui/material/colors";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
+import { redirect } from 'react-router-dom';
 import { Dispatch } from "redux";
 import { loginUser } from ".";
 import LoginComponent from "../../components/user/login";
@@ -12,6 +14,7 @@ interface State {
 }
 
 class Login extends Component<any, State> {
+
     constructor(props: Object) {
         super(props)
         this.state = {
@@ -29,7 +32,6 @@ class Login extends Component<any, State> {
     handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
         const { name, value } = e.target
-
         this.setState((prev: { credentials: any; }) => ({
             credentials: {
                 ...prev.credentials,
@@ -39,26 +41,34 @@ class Login extends Component<any, State> {
     }
 
     loginHandler = () => {
-        const { email, password } = this.state.credentials
+        const token = localStorage.getItem('token')
+        const login = localStorage.getItem('login')
+        const { email , password } = this.state.credentials
         if(!(email && password)) {
-            alert("Enter required field inputs")
-        } else {
+            alert("Enter required details")
+        } else {    
             this.props.loginUser(this.state.credentials)
-            alert("Logged in")
-            this.setState({ success: true })
+            if(token) {
+                if(login === 'true') {
+                    alert("Admin logged-in")
+                    this.setState({ success: true })
+                } else {
+                    alert("User logged-in")
+                }
+            }
         }
     }
 
    render() {
 
-    return (
-        <div>
-            {/* <LoginComponent loginHandler={this.loginHandler} handleChange={this.handleChange} someState= {this.state.credentials} /> */}
-            {
-                this.state.success? <Navigate to='/admin' />: <Navigate to='/' />
-            }
-        </div>
-    )
+        return (
+            <>
+                <LoginComponent handleChange={this.handleChange} loginHandler={this.loginHandler} someState={this.state.credentials} />
+                {
+                    this.state.success? <Navigate to='/admin'/>: <Navigate to='/' />
+                }
+            </>
+        )
    }
 
 }

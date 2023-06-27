@@ -1,12 +1,10 @@
 import { Routes, Route, Navigate, PathRouteProps, IndexRouteProps } from "react-router-dom"
 
 import Admin from "../components/admin/home"
-import AdminHome from "../components/admin/home"
+import AdminHome from "../components/admin/admin"
 import UserHome from "../components/user/home"
-import Login from "../components/user/login"
+import Login from "../container/user/login"
 import SignUp from "../container/user/sign-up"
-// import SignUp from "../components/user/sign-up"
-// import Login from "../container/user/login"
 import ValidateSession from "../shared/validation/validate-session"
 
 type Props = {
@@ -24,7 +22,7 @@ const Router = () => {
         return login ? children : <Navigate to='/' />
     }
 
-    // ValidateSession()
+    ValidateSession()
 
     return (
         <>

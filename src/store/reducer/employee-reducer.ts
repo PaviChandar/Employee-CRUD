@@ -13,7 +13,6 @@ const initialState = {
 }
 
 export const employeeReducer = (state:IEmployeeState = initialState, action: IEmployeeType): IEmployeeState => {
-    console.log("inside reducer")
     switch(action.type) {
         case types.ADD_EMPLOYEE:
             return {

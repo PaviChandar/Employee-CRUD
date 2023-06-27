@@ -4,12 +4,6 @@ import GetAllEmployee from "./get-all-employee"
 
 const Admin = () => {
 
-    // const { getAllEmployees } = EmployeeContainer()
-
-    // useEffect(() => {
-    //     getAllEmployees()
-    // })
-
     return (
         <div>
             <h1>Admin home</h1>
