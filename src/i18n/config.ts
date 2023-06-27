@@ -18,8 +18,8 @@ i18next
         //     }
         // },
         backend: {
-            loadPath: '/locales/{{en}}/{{translations}}.json',
-            crossDomain: false
+            loadPath: '/locales/{{lng}}/{{ns}}.json',
+            crossDomain: true
         },
         ns: ['translations'],
         keySeparator: false,
