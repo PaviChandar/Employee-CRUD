@@ -1,4 +1,4 @@
-import { IUserInput, IUserState, IUserType } from "../../shared/interface/user.interface"
+import { IUserInput, IUserState, IUser } from "../../shared/interface/user.interface"
 import * as types from "../action/action-type"
 
 const initialState: IUserState| IUserInput = {
@@ -11,9 +11,12 @@ const initialState: IUserState| IUserInput = {
     login: false
 }
 
-export const userReducer = (state: IUserState= initialState, action: IUserType) => {
+const userReducer = (state: IUserState= initialState, action: IUser) => {
+    console.log("inside user reducer", action)
     switch(action.type) {
-        case types.LOGIN_USER:
+        case types.LOGIN:
+            console.log("prev state in red : ", {...state})
+            console.log("payload in red : ", action.payload)
             return {
                 ...state,
                 user: action.payload
@@ -32,3 +35,5 @@ export const userReducer = (state: IUserState= initialState, action: IUserType) 
             return state
     }
 }
+
+export default userReducer

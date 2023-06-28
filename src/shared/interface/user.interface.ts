@@ -11,15 +11,16 @@ export interface IUserState {
 }
 
 export interface IUser {
-    userData: any; //array
-    type: string;
+    userData: IUserState
+    type: string
     payload: IUserInput
 }
 
 export interface IUsers {
-    userData: any;
+    // userData: any;
+    userData: IUserState,
     type: string;
     payload: IUserInput[]
 }
 
-export type IUserType = IUser
+export type IUserType = IUser 

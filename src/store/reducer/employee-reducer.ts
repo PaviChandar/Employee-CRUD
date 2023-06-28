@@ -12,7 +12,7 @@ const initialState = {
     }
 }
 
-export const employeeReducer = (state:IEmployeeState = initialState, action: IEmployeeType): IEmployeeState => {
+const employeeReducer = (state:IEmployeeState = initialState, action: IEmployeeType): IEmployeeState => {
     switch(action.type) {
         case types.ADD_EMPLOYEE:
             return {
@@ -45,3 +45,5 @@ export const employeeReducer = (state:IEmployeeState = initialState, action: IEm
             return state
     }
 }
+
+export default employeeReducer

@@ -26,7 +26,7 @@ export const retreiveEmployee = (employee: IEmployeeInput) => ({
 })
 
 export const userLoggedIn = (user: IUserInput) => ({
-    type: types.LOGIN_USER,
+    type: types.LOGIN,
     payload: user
 })
 
@@ -35,6 +35,7 @@ export const userRegistered = (user: IUserInput) => ({
     payload: user
 })
 
-export const isLogin = () => ({
-    type: types.IS_LOGIN
+export const isLogin = (login: any) => ({
+    type: types.IS_LOGIN,
+    payload: login
 })

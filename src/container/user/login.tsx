@@ -1,16 +1,16 @@
-import { red } from "@mui/material/colors";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { redirect } from 'react-router-dom';
 import { Dispatch } from "redux";
 import { loginUser } from ".";
 import LoginComponent from "../../components/user/login";
 import { IUserInput } from "../../shared/interface/user.interface";
+import { validateLogin } from "../../shared/validation/validate";
 
 interface State {
     credentials: IUserInput
     success: boolean
+    errors: any
 }
 
 class Login extends Component<any, State> {
@@ -22,7 +22,12 @@ class Login extends Component<any, State> {
                 email: "",
                 password:""
             },
-            success: false
+            success: false,
+            // errors: {
+            //     email:"",
+            //     password: ""
+            // }
+            errors: {}
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -43,9 +48,12 @@ class Login extends Component<any, State> {
     loginHandler = () => {
         const token = localStorage.getItem('token')
         const login = localStorage.getItem('login')
-        const { email , password } = this.state.credentials
+        const { email, password } = this.state.credentials
+        const errors = validateLogin(this.state.credentials)
+
         if(!(email && password)) {
-            alert("Enter required details")
+            validateLogin(this.state.credentials)
+            this.setState({ errors })
         } else {    
             this.props.loginUser(this.state.credentials)
             if(token) {
@@ -63,7 +71,8 @@ class Login extends Component<any, State> {
 
         return (
             <>
-                <LoginComponent handleChange={this.handleChange} loginHandler={this.loginHandler} someState={this.state.credentials} />
+                <LoginComponent handleChange={this.handleChange} loginHandler={this.loginHandler} someState={this.state.credentials} errors={this.state.errors} />
+                {console.log("stat succ : ", this.state.success)}
                 {
                     this.state.success? <Navigate to='/admin'/>: <Navigate to='/' />
                 }

@@ -1,2 +1,4 @@
-export const token = localStorage.getItem('token')
-export const login = localStorage.getItem('login')
+export function Storage() {
+    let key: string
+    localStorage.removeItem('key')
+}

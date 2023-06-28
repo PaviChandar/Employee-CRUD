@@ -9,14 +9,6 @@ i18next
         fallbackLng: "en",
         lng: "en",
         debug: true,
-        // resources: {
-        //     en: {
-        //         translations: require('./en/translations.json')
-        //     },
-        //     ta: {
-        //         translations: require("./ta/translations.json")
-        //     }
-        // },
         backend: {
             loadPath: '/locales/{{lng}}/{{ns}}.json',
             crossDomain: true
