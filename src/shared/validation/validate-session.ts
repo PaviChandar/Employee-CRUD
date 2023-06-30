@@ -10,12 +10,6 @@ function ValidateSession() {
         if(url.indexOf('login') > -1 || url.indexOf('sign-up') > -1) {
             return true
         }
-
-        if(localStorage.getItem("token"))
-            return true
-        else {
-            return false
-        }
     }
 
     useEffect(() => {

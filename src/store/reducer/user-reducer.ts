@@ -12,11 +12,8 @@ const initialState: IUserState| IUserInput = {
 }
 
 const userReducer = (state: IUserState= initialState, action: IUser) => {
-    console.log("inside user reducer", action)
     switch(action.type) {
         case types.LOGIN:
-            console.log("prev state in red : ", {...state})
-            console.log("payload in red : ", action.payload)
             return {
                 ...state,
                 user: action.payload

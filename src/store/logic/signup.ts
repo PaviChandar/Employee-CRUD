@@ -3,7 +3,7 @@ import { userRegister } from "../../api/user-resource";
 import { userRegistered } from "../action/action";
 
 const signUpUser: any = createLogic({
-    type:'SIGN_UP',
+    type:'REGISTER_USER',
     async process({ action }: any, dispatch, done) {
         const user = action.payload
         userRegister(user)

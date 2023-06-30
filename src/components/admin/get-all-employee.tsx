@@ -12,7 +12,6 @@ const GetAllEmployee = () => {
     const [data, setData] = useState<any>()
 
     useEffect(() => {
-        console.log("inside use-effect")
         getAllEmployees()
         setData(data)
     }, [data])
