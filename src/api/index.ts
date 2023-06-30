@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.response.use(
     function (response) {
-        console.log("response from axios : ", response)
+        // console.log("response from axios : ", response)
         return response
     } ,  
     

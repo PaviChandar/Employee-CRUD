@@ -11,9 +11,10 @@ const initialState: IUserState| IUserInput = {
     login: false
 }
 
-export const userReducer = (state: IUserState= initialState, action: IUserType) => {
+const userReducer = (state: IUserState= initialState, action: IUserType) => {
     switch(action.type) {
-        case types.LOGIN_USER:
+        case types.LOGIN:
+            console.log("inside login red : ", action)
             return {
                 ...state,
                 user: action.payload
@@ -32,3 +33,5 @@ export const userReducer = (state: IUserState= initialState, action: IUserType) 
             return state
     }
 }
+
+export default userReducer

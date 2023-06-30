@@ -7,7 +7,7 @@ export interface IEmployeeInput {
 }
 
 export interface IEmployee {
-    employeeData: any //array
+    employeeData: any
     type: string
     payload: IEmployeeInput
 }

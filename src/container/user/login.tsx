@@ -1,9 +1,8 @@
-import { red } from "@mui/material/colors";
 import { Component } from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { redirect } from 'react-router-dom';
 import { Dispatch } from "redux";
+
 import { loginUser } from ".";
 import LoginComponent from "../../components/user/login";
 import { IUserInput } from "../../shared/interface/user.interface";

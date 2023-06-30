@@ -1,45 +1,26 @@
-import { useEffect, useState } from "react"
-import * as React from 'react';
-import TableContainer from '@mui/material/TableContainer';
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import EmployeeContainer from "../../container/employee-container"
-import { IEmployees } from "../../shared/interface/employee.interface"
+import { getAllEmployees } from "../../container/employee";
+import { IEmployees } from "../../shared/interface/employee.interface";
 
-const GetAllEmployee = () => {
-    const { getAllEmployees } = EmployeeContainer()
-
-    const [data, setData] = useState<any>()
+const GetAllEmployeeComponent = () => {
 
     useEffect(() => {
         console.log("inside use-effect")
         getAllEmployees()
-        setData(data)
-    }, [data])
+    }, [])
 
-    const employee = useSelector((state: any) => state.employeeData.IEmployees)
+    const employee = useSelector((state: any) => state.employeeData.employees)
     console.log("emp from state : ", employee)
 
     return (
         <>
             <div>
-            <h3>Retreiving all emps</h3>
-            {console.log("data : ", data)}
-            {
-                data && data.map((x: any) => {
-                    return (
-                        <div>
-                            <table>
-                                <td>Name : {x.name}</td>
-                                <td>Salary : {x.salary}</td>
-                            </table>
-                        </div>
-                    )
-                })
-            }
+                <h3>Retreiving all emps</h3>
             </div>
         </>
     )
 }
 
-export default GetAllEmployee
+export default GetAllEmployeeComponent
