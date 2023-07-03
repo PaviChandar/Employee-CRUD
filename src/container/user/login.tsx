@@ -41,11 +41,6 @@ class Login extends Component<any, State> {
     }
 
     loginHandler = () => {
-        // const token = localStorage.getItem('token')
-        // const login = localStorage.getItem('login')
-
-        localStorageKey('token')
-        localStorageKey('login')
 
         const { email , password } = this.state.credentials
         if(!(email && password)) {
