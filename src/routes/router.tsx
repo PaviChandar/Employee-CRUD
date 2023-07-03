@@ -6,6 +6,7 @@ import UserHome from "../components/user/home"
 import Login from "../container/user/login"
 import SignUp from "../container/user/sign-up"
 import ValidateSession from "../shared/validation/validate-session"
+import AddEmployee from "../container/employee/add"
 
 type Props = {
     children: PathRouteProps | IndexRouteProps | any
@@ -40,6 +41,12 @@ const Router = () => {
                             <Admin />
                         </PrivateRoutes>
                 } />
+
+                    <Route path='create' element= {
+                        <PrivateRoutes>
+                            <AddEmployee />
+                        </PrivateRoutes> 
+                    } />
                 </Route>
 
                 <Route path='/' element= {

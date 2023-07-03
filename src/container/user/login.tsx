@@ -6,6 +6,7 @@ import { Dispatch } from "redux";
 import { loginUser } from ".";
 import LoginComponent from "../../components/user/login";
 import { IUserInput } from "../../shared/interface/user.interface";
+import { localStorageKey } from "../../shared/storage/token";
 
 interface State {
     credentials: IUserInput
@@ -40,16 +41,20 @@ class Login extends Component<any, State> {
     }
 
     loginHandler = () => {
-        const token = localStorage.getItem('token')
-        const login = localStorage.getItem('login')
+        // const token = localStorage.getItem('token')
+        // const login = localStorage.getItem('login')
+
+        localStorageKey('token')
+        localStorageKey('login')
+
         const { email , password } = this.state.credentials
         if(!(email && password)) {
             alert("Enter required details")
         } else {    
             this.props.loginUser(this.state.credentials)
-            if(token) {
-                if(login === 'true') {
-                    alert("Admin logged-in")
+            if(localStorageKey('token')) {
+                if(localStorageKey('login') === 'true') {
+                    alert("Admin logged-in") //wrong way
                     this.setState({ success: true })
                 } else {
                     alert("User logged-in")

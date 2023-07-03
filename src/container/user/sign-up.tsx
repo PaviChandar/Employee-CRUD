@@ -2,6 +2,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { Dispatch } from "redux";
+
 import { registerUser } from ".";
 import SignUpComponent from "../../components/user/sign-up";
 import { IUserInput } from "../../shared/interface/user.interface";
