@@ -5,6 +5,7 @@ import { Dispatch } from "redux";
 import { loginUser } from ".";
 import LoginComponent from "../../components/user/login";
 import { IUserInput } from "../../shared/interface/user.interface";
+import { localStorageKey } from "../../shared/storage/token";
 import { validateLogin } from "../../shared/validation/validate";
 
 interface State {
@@ -50,6 +51,8 @@ class Login extends Component<any, State> {
         const login = localStorage.getItem('login')
         const { email, password } = this.state.credentials
         const errors = validateLogin(this.state.credentials)
+
+        localStorageKey()
 
         if(!(email && password)) {
             validateLogin(this.state.credentials)
