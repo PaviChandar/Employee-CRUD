@@ -52,8 +52,6 @@ class Login extends Component<any, State> {
         const { email, password } = this.state.credentials
         const errors = validateLogin(this.state.credentials)
 
-        localStorageKey()
-
         if(!(email && password)) {
             validateLogin(this.state.credentials)
             this.setState({ errors })
