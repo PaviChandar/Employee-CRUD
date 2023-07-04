@@ -13,8 +13,6 @@ const initialState = {
 }
 
 const employeeReducer = (state:IEmployeeState = initialState, action: IEmployeeType) => {
-    console.log("initial state in emp red : ", initialState)
-    console.log("action in emp red : ", action)
     switch(action.type) {
         case types.ADD_EMPLOYEE:
             return {

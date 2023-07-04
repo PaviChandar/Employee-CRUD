@@ -48,7 +48,7 @@ class SignUp extends Component<any, State> {
         } else {
             this.props.registerUser(this.state.credentials)
             alert("User registered successfully!")
-            this.setState({ success: true })
+            // this.setState({ success: true })
         }
     }
 
@@ -56,9 +56,9 @@ class SignUp extends Component<any, State> {
         return (
             <div>
                 <SignUpComponent handleChange={this.handleChange} handleSignUp={this.handleSignUp} someState={this.state.credentials} />
-                {
+                {/* {
                     this.state.success? <Navigate to='/login' />: null
-                }
+                } */}
             </div>
         )
     }

@@ -12,6 +12,7 @@ type SignProps = {
 
 const SignUpComponent: React.FC<SignProps> = ({ handleSignUp, handleChange, someState }) => {
     const navigate = useNavigate()
+
     return (
         <div className="signUpContainer" >
             <h1>Sign-up new user</h1>

@@ -11,8 +11,8 @@ const loginUser: any = createLogic({
             .then(function (response) {
                 dispatch(userLoggedIn(response.data.data))
                 localStorage.setItem('token', response.data.token)
-                localStorage.setItem('login', response.data.data.login)
-                dispatch(isLogin(response.data.data.login))
+                // localStorage.setItem('login', response.data.data.login)
+                 dispatch(isLogin(response.data.data.login))
             })
             .catch(function (error) {
                 console.log("Error from login response : ", error)
