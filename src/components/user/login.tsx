@@ -1,5 +1,4 @@
 import { Button } from '@mui/material'
-import { useState } from 'react'
 import { useNavigate } from 'react-router'
 
 import "../../assets/login.css"
@@ -9,9 +8,10 @@ type LoginProps = {
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     loginHandler: () => void
     someState: IUserInput
+    errors: IUserInput
 }
 
-const LoginComponent: React.FC<LoginProps> = ({ handleChange, loginHandler, someState }) => {
+const LoginComponent: React.FC<LoginProps> = ({ handleChange, loginHandler, someState, errors }) => {
 
     const navigate = useNavigate()
 
@@ -20,23 +20,25 @@ const LoginComponent: React.FC<LoginProps> = ({ handleChange, loginHandler, some
             <form className="loginInputContainer">
                 <div className="loginInput">
                     <input type="text" placeholder="email" name="email" onChange={(e) => handleChange(e)} value={someState.email} />
-               </div>
+                    <span className='error' >{errors.email}</span>
+                </div>
                 <div className="loginInput">
                     <input type="password" placeholder="password" name="password" onChange={(e) => handleChange(e)} value={someState.password} />
-                 </div>
+                    <span className='error'>{errors.password}</span>
+                </div>
             </form>
-                <Button color='secondary' sx={{backgroundColor: "ButtonHighlight"}}
+            <Button color='secondary' sx={{backgroundColor: "ButtonHighlight"}}
                 onClick={loginHandler}
-                >
-                    Login
-                </Button>
-                <h3>If not an user, please sign-up</h3>
-                <Button color='secondary' sx={{backgroundColor: "ButtonShadow"}}
-                    onClick={() => navigate('/signup')} 
-                >
-                    SignUp
-                </Button>
-    </div>
+            >
+                Login
+            </Button>
+            <h3>If not an user, please sign-up</h3>
+            <Button color='secondary' sx={{backgroundColor: "ButtonShadow"}}
+                onClick={() => navigate('/signup')} 
+            >
+                SignUp
+            </Button>
+        </div>
     )
 
 }
