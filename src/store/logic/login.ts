@@ -16,7 +16,7 @@ const loginUser: any = createLogic({
             })
             .catch(function (error) {
                 console.log("Error from login response : ", error)
-                alert("Incorrect credentials")
+                alert("Incorrect credentials") 
             })
             done()
     }
