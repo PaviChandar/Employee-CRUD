@@ -12,13 +12,13 @@ export interface IUserState {
 }
 
 export interface IUser {
-    userData: any; //array
+    userData: IUserInput; 
     type: string;
     payload: IUserInput
 }
 
 export interface IUsers {
-    userData: any;
+    userData: IUserInput;
     type: string;
     payload: IUserInput[]
 }

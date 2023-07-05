@@ -15,17 +15,17 @@ const userReducer = (state: IUserState= initialState, action: IUserType) => {
     console.log("action : ", action);
     
     switch(action.type) {
-        case types.LOGIN_USER:
-            console.log("type : ", action.type)
-            console.log("payload : ", action.payload)
-            return {
-                ...state,
-                // user: action.payload,
-                // login: action.payload.login
-            }
+        // case types.LOGIN_USER:
+        //     console.log("type : ", action.type)
+        //     console.log("payload : ", action.payload)
+        //     return {
+        //         ...state,
+        //         user: action.payload,
+        //         login: action.payload.login
+        //     }
         case 'USER':
             console.log("action payload: ",action.payload);
-            
+            console.log("type : ", action.type)
             return {
                 ...state,
                 user: action.payload

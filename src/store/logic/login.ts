@@ -15,7 +15,7 @@ const loginUser: any = createLogic({
                 dispatch(userData(response.data.data))
                 // dispatch(userLoggedIn(response.data.data))
                 localStorage.setItem('token', response.data.token)
-                dispatch(isLogin(response.data.data.login)) //succ-err -> lifecycle
+                dispatch(isLogin(response.data.data.login))
             })
             .catch(function (error) {
                 const message = error.response.data.message

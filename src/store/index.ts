@@ -2,7 +2,7 @@ import axios from "axios";
 import { createStore, applyMiddleware } from "redux"
 import { composeWithDevTools } from "redux-devtools-extension";
 import { createLogicMiddleware } from "redux-logic";
-import thunk from "redux-thunk";
+// import thunk from "redux-thunk";
 
 import rootReducer from "./reducer/root-reducer";
 import rootLogic from "../store/logic/index"
@@ -13,4 +13,4 @@ const deps = {
 
 const logicMiddleware = createLogicMiddleware(rootLogic, deps)
 
-export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk, logicMiddleware)))
+export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logicMiddleware)))

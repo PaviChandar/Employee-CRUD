@@ -63,10 +63,10 @@ class Login extends Component<any, State> {
         return (
             <>
                 <LoginComponent handleChange={this.handleChange} loginHandler={this.loginHandler} someState={this.state.credentials} errors={this.state.errors} />
-                {/* {console.log("inside compo : ", this.props.isLogin)} */}
+                {console.log("inside compo : ", this.props)}
                 {
                     // this.state.success? <Navigate to='/admin'/>: <Navigate to='/' />
-                    this.props.isLogin? <Navigate to='/admin'/>: <Navigate to='/' />
+                    this.props.login? <Navigate to='/admin'/>: <Navigate to='/' />
                 }
             </>
         )
@@ -78,15 +78,15 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     
     return {
         loginUser: (credentials: IUserInput) => dispatch(userLoggedIn(credentials)),
-        isLogin: (login: boolean) => dispatch(isLogin(login))
+        // isLogin: (login: boolean) => dispatch(isLogin(login))
     }
 }
 
-// const mapStateToProps = (state: any) => {
-//     console.log("inside map state : ")
-//     return {
-//         isLoggedIn: state.isLoggedIn
-//     }
-// }
+const mapStateToProps = (state: any) => {
+    console.log("inside map state : ")
+    return {
+        login: state.login
+    }
+}
 
-export default connect (null, mapDispatchToProps)(Login)
+export default connect (mapStateToProps, mapDispatchToProps)(Login)
