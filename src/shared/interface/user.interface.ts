@@ -2,6 +2,7 @@ export interface IUserInput {
     email: string,
     password: string
     username?: string
+    login?: boolean
 }
 
 export interface IUserState {

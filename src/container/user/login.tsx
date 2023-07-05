@@ -3,17 +3,18 @@ import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { Dispatch } from "redux";
 
-import { login, loginUser } from ".";
+import { isLogin } from ".";
 import LoginComponent from "../../components/user/login";
 import { IUserInput } from "../../shared/interface/user.interface";
 import { localStorageKey } from "../../shared/storage/token";
 import { validateLogin } from "../../shared/validation/validate";
+import { userLoggedIn } from "../../store/action/action";
+import loginUser from "../../store/logic/login";
 
 interface State {
     credentials: IUserInput
     success: boolean
     errors: any
-    logState: boolean
 }
 
 class Login extends Component<any, State> {
@@ -26,8 +27,7 @@ class Login extends Component<any, State> {
                 password:""
             },
             success: false,
-            errors: {},
-            logState: false
+            errors: {}
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -37,62 +37,36 @@ class Login extends Component<any, State> {
     handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
         const { name, value } = e.target
-        this.setState((prev: { credentials: any; }) => ({
+        const { email, password } = this.state.credentials
+        const errors = validateLogin(this.state.credentials)
+
+        this.setState((prev: { credentials: any }) => ({
             credentials: {
                 ...prev.credentials,
                 [name]: value
             }
         }))
-    }
-
-    loginHandler = () => {
-        const { email, password } = this.state.credentials
-        const errors = validateLogin(this.state.credentials)
 
         if(!(email && password)) {
             validateLogin(this.state.credentials)
             this.setState({ errors })
-        } else {    
-            this.props.loginUser(this.state.credentials)
-            this.props.login(this.state.logState)
-
-            console.log("log func : ",this.props.loginUser(this.state.credentials))
-            console.log("log func state : ",this.state.credentials)
-            console.log("function : ",this.props.login(this.state.logState) )
-            console.log("function state : ",this.state.logState) 
-
-            if(localStorageKey('token')) {
-                if(this.state.logState === false) {
-                    console.log("inside if ")
-                    alert("User logged-in")
-                } else {
-                    console.log("inside else admin ")
-                    alert("Admin logged-in")
-                    this.setState({ success: true })
-                    this.setState({ logState: true })
-                }
-            }
-
-            // if(localStorageKey('token')) {
-            //     if(localStorageKey('login') === 'true') {
-            //         alert("Admin logged-in")
-            //         this.setState({ success: true })
-            //     } else {
-            //         alert("User logged-in")
-            //     }
-            // }
         }
     }
 
-   render() {
+    loginHandler = () => {
+        this.props.loginUser(this.state.credentials)
+        this.setState({ success: true })
+    }
+
+    render() {
 
         return (
             <>
                 <LoginComponent handleChange={this.handleChange} loginHandler={this.loginHandler} someState={this.state.credentials} errors={this.state.errors} />
-                {console.log("succ , log : ",this.state.success, this.state.logState )}
+                {/* {console.log("inside compo : ", this.props.isLogin)} */}
                 {
                     // this.state.success? <Navigate to='/admin'/>: <Navigate to='/' />
-                    this.state.success && this.state.logState? <Navigate to='/'/>: <Navigate to='/admin' />
+                    this.props.isLogin? <Navigate to='/admin'/>: <Navigate to='/' />
                 }
             </>
         )
@@ -103,9 +77,16 @@ class Login extends Component<any, State> {
 const mapDispatchToProps = (dispatch: Dispatch) => {
     
     return {
-        loginUser: (credentials: IUserInput) => dispatch(loginUser(credentials)),
-        login: (logState: boolean) => dispatch(login(logState))
+        loginUser: (credentials: IUserInput) => dispatch(userLoggedIn(credentials)),
+        isLogin: (login: boolean) => dispatch(isLogin(login))
     }
 }
+
+// const mapStateToProps = (state: any) => {
+//     console.log("inside map state : ")
+//     return {
+//         isLoggedIn: state.isLoggedIn
+//     }
+// }
 
 export default connect (null, mapDispatchToProps)(Login)

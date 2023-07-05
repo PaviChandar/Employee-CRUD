@@ -6,19 +6,30 @@ const initialState: IUserState| IUserInput = {
     user: {
         email:'',
         password:'',
-        username:''
+        username:'',
+        login: false
     },
-    login: false
 }
 
 const userReducer = (state: IUserState= initialState, action: IUserType) => {
+    console.log("action : ", action);
+    
     switch(action.type) {
-        case types.LOGIN:
-            console.log("inside login red : ", action)
+        case types.LOGIN_USER:
+            console.log("type : ", action.type)
+            console.log("payload : ", action.payload)
+            return {
+                ...state,
+                // user: action.payload,
+                // login: action.payload.login
+            }
+        case 'USER':
+            console.log("action payload: ",action.payload);
+            
             return {
                 ...state,
                 user: action.payload
-            }
+            }        
         case types.REGISTER_USER:
             return {
                 ...state,
