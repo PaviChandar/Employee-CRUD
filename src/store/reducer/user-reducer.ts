@@ -8,7 +8,6 @@ const initialState: IUserState| IUserInput = {
         password:'',
         username:'',
         login: false,
-        // message: ''
     },
     message: ''
 }
@@ -16,27 +15,27 @@ const initialState: IUserState| IUserInput = {
 const userReducer = (state: IUserState= initialState, action: IUserType) => {
     console.log("action : ", action);
     
-    switch(action.type) {
-        case types.LOGIN_USER:
-            console.log("type : ", action.type)
-            console.log("payload : ", action.payload)
-            return {
-                ...state,
-                user: action.payload,
-                login: action.payload.login
-            }
-        // case 'USER':
-        //     console.log("action payload: ",action.payload);
-        //     console.log("type : ", action.type)
-        //     return {
-        //         ...state,
-        //         user: action.payload
-        //     }        
+    switch(action.type) {      
         case types.REGISTER_USER:
-            console.log("inside reg reducer", action.payload)
             return {
                 ...state,
                 user: action.payload
+            }
+        // case 'LOGIN_USER':
+        //     console.log("action in login red : ", action.type)
+        //     console.log("payload in login red : ", action.payload)
+        //     return {
+        //         ...state,
+        //         user: action.payload
+        //     }
+        case 'LOGIN_REQUEST':
+            console.log("action in login red : ", action.type)
+            console.log("payload in login red : ", action.payload)
+            console.log("msg in login red : ", action.payload.message)
+            return {
+                ...state,
+                user: action.payload,
+                message: action.payload.message
             }
         case types.IS_LOGIN:
             return {
@@ -44,13 +43,7 @@ const userReducer = (state: IUserState= initialState, action: IUserType) => {
                 login: action.payload
             }
         case types.SET_MESSAGE:
-            console.log("set msg : ", action)
-            return {
-                ...state,
-                message: action.payload.message
-            }
-        case 'TEST': 
-        console.log("test reducer : ", action.payload)
+            console.log("set msg : ", action.payload.message)
             return {
                 ...state,
                 message: action.payload.message

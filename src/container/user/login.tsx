@@ -58,11 +58,8 @@ class Login extends Component<any, State> {
     }
 
     loginHandler = () => {
+        console.log("inside login handler")
         this.props.loginUser(this.state.credentials)
-        // this.props.setMessage(this.state.message)
-
-        // console.log("msg inside loginhandle : ", this.state.message)
-        // console.log("function inside loginhandle : ", this.props.setMessage(this.state.message))
     }    
 
     render() {
@@ -82,17 +79,8 @@ class Login extends Component<any, State> {
 const mapDispatchToProps = (dispatch: Dispatch) => {
     
     return {
-        loginUser: (credentials: IUserInput) => dispatch(loginUser(credentials)),
-        isLogin: (login: boolean) => dispatch(isLogin(login)),
-        // setMessage: (message: any) => dispatch(setMessage(message))
+        loginUser: (credentials: IUserInput) => dispatch(loginUser(credentials))
     }
 }
-
-// const mapStateToProps = (state: any) => {
-//     console.log("inside map state : ")
-//     return {
-//         login: state.login
-//     }
-// }
 
 export default connect (null, mapDispatchToProps)(Login)

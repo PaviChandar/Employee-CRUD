@@ -2,7 +2,7 @@ import { IUserInput } from "../../shared/interface/user.interface"
 
 export const loginUser = (user: IUserInput) => {
     console.log("inside cont : ", user)
-    return ({ type: 'LOGIN', payload: user })
+    return ({ type: 'LOGIN_REQUEST', payload: user })
 }
 
 export const registerUser = (user: IUserInput) => {

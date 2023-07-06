@@ -26,19 +26,10 @@ export const retreiveEmployee = (employee: IEmployeeInput) => ({
     payload: employee
 })
 
-//redirect to logic method
-export const userLoggedIn = (user: IUserInput) =>  {
-    console.log("inside action in userloggedin : ", user)
-    return ({
+export const userLoggedIn = (user: IUserInput) =>  ({
     type: types.LOGIN_USER,
     payload: user
-})}
-
-//redirect to reducer
-export const userData = (user: any) => ({
-        type: 'USER',
-        payload: user
-});
+})
 
 export const userRegistered = (user: IUserInput) => ({
     type: types.REGISTER_USER,
