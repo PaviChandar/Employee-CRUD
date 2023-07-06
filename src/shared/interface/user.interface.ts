@@ -3,12 +3,14 @@ export interface IUserInput {
     password: string
     username?: string
     login?: boolean
+    message?: string
 }
 
 export interface IUserState {
     user?: IUserInput;
     users?: Array<IUserInput>
     login?: boolean
+    // message: string
 }
 
 export interface IUser {

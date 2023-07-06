@@ -1,9 +1,9 @@
 import { IUserInput } from "../../shared/interface/user.interface"
 
-// export const loginUser = (user: IUserInput) => {
-//     console.log("inside cont : ", user)
-//     return ({ type: 'LOGIN', payload: user })
-// }
+export const loginUser = (user: IUserInput) => {
+    console.log("inside cont : ", user)
+    return ({ type: 'LOGIN', payload: user })
+}
 
 export const registerUser = (user: IUserInput) => {
     return ({ type: 'SIGN_UP', payload: user })

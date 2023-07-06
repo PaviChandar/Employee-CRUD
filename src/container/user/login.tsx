@@ -3,18 +3,20 @@ import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { Dispatch } from "redux";
 
-import { isLogin } from ".";
+import { isLogin , loginUser} from ".";
 import LoginComponent from "../../components/user/login";
 import { IUserInput } from "../../shared/interface/user.interface";
 import { localStorageKey } from "../../shared/storage/token";
 import { validateLogin } from "../../shared/validation/validate";
-import { userLoggedIn } from "../../store/action/action";
-import loginUser from "../../store/logic/login";
+import { setMessage, userLoggedIn } from "../../store/action/action";
+// import loginUser from "../../store/logic/login";
 
 interface State {
     credentials: IUserInput
     success: boolean
     errors: any
+    login: boolean
+    message: string
 }
 
 class Login extends Component<any, State> {
@@ -27,7 +29,9 @@ class Login extends Component<any, State> {
                 password:""
             },
             success: false,
-            errors: {}
+            errors: {},
+            login:false,
+            message:""
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -55,17 +59,18 @@ class Login extends Component<any, State> {
 
     loginHandler = () => {
         this.props.loginUser(this.state.credentials)
-        this.setState({ success: true })
-    }
+        // this.props.setMessage(this.state.message)
+
+        // console.log("msg inside loginhandle : ", this.state.message)
+        // console.log("function inside loginhandle : ", this.props.setMessage(this.state.message))
+    }    
 
     render() {
 
         return (
             <>
                 <LoginComponent handleChange={this.handleChange} loginHandler={this.loginHandler} someState={this.state.credentials} errors={this.state.errors} />
-                {console.log("inside compo : ", this.props)}
                 {
-                    // this.state.success? <Navigate to='/admin'/>: <Navigate to='/' />
                     this.props.login? <Navigate to='/admin'/>: <Navigate to='/' />
                 }
             </>
@@ -77,16 +82,17 @@ class Login extends Component<any, State> {
 const mapDispatchToProps = (dispatch: Dispatch) => {
     
     return {
-        loginUser: (credentials: IUserInput) => dispatch(userLoggedIn(credentials)),
-        // isLogin: (login: boolean) => dispatch(isLogin(login))
+        loginUser: (credentials: IUserInput) => dispatch(loginUser(credentials)),
+        isLogin: (login: boolean) => dispatch(isLogin(login)),
+        // setMessage: (message: any) => dispatch(setMessage(message))
     }
 }
 
-const mapStateToProps = (state: any) => {
-    console.log("inside map state : ")
-    return {
-        login: state.login
-    }
-}
+// const mapStateToProps = (state: any) => {
+//     console.log("inside map state : ")
+//     return {
+//         login: state.login
+//     }
+// }
 
-export default connect (mapStateToProps, mapDispatchToProps)(Login)
+export default connect (null, mapDispatchToProps)(Login)
