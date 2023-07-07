@@ -36,15 +36,17 @@ export const userRegistered = (user: IUserInput) => ({
     payload: user
 })
 
-export const isLogin = (login: IUserInput) => ({
-    type: types.IS_LOGIN,
+export const isLogin = (login: IUserInput) => {
+    console.log("inside is-log cont : ", login)
+    return ({
+    type: 'IS_LOGIN',
     payload: login
-})
+})}
 
 export const setMessage = (message: IUserInput) => {
     console.log("inside action-ts : ", message)
     return ({
-    type: types.SET_MESSAGE,
+    type: 'SET_MESSAGE',
     payload: message
 })}
 

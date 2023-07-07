@@ -21,28 +21,20 @@ const userReducer = (state: IUserState= initialState, action: IUserType) => {
                 ...state,
                 user: action.payload
             }
-        // case 'LOGIN_USER':
-        //     console.log("action in login red : ", action.type)
-        //     console.log("payload in login red : ", action.payload)
-        //     return {
-        //         ...state,
-        //         user: action.payload
-        //     }
         case 'LOGIN_REQUEST':
             console.log("action in login red : ", action.type)
             console.log("payload in login red : ", action.payload)
-            console.log("msg in login red : ", action.payload.message)
             return {
                 ...state,
-                user: action.payload,
-                message: action.payload.message
+                user: action.payload
             }
-        case types.IS_LOGIN:
+        case 'IS_LOGIN':
+            console.log("inside is-log reducer : ", action.payload)
             return {
                 ...state,
                 login: action.payload
             }
-        case types.SET_MESSAGE:
+        case 'SET_MESSAGE':
             console.log("set msg : ", action.payload.message)
             return {
                 ...state,

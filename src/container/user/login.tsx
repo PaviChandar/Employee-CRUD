@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { Dispatch } from "redux";
 
-import { isLogin , loginUser} from ".";
+import { isLogin , loginUser } from ".";
 import LoginComponent from "../../components/user/login";
 import { IUserInput } from "../../shared/interface/user.interface";
 import { localStorageKey } from "../../shared/storage/token";
@@ -58,7 +58,6 @@ class Login extends Component<any, State> {
     }
 
     loginHandler = () => {
-        console.log("inside login handler")
         this.props.loginUser(this.state.credentials)
     }    
 
@@ -66,7 +65,7 @@ class Login extends Component<any, State> {
 
         return (
             <>
-                <LoginComponent handleChange={this.handleChange} loginHandler={this.loginHandler} someState={this.state.credentials} errors={this.state.errors} />
+                <LoginComponent handleChange={this.handleChange} someState={this.state.credentials} errors={this.state.errors} />
                 {
                     this.props.login? <Navigate to='/admin'/>: <Navigate to='/' />
                 }
