@@ -4,16 +4,17 @@ export interface IEmployeeInput {
     age: number
     city: string
     salary: number
+    message?: string
 }
 
 export interface IEmployee {
-    employeeData: any
+    employeeData: IEmployeeInput
     type: string
     payload: IEmployeeInput
 }
 
 export interface IEmployees {
-    employeeData: any
+    employeeData: IEmployeeInput
     type: string
     payload: IEmployeeInput[]
 }
@@ -21,6 +22,8 @@ export interface IEmployees {
 export interface IEmployeeState {
     employee?: IEmployeeInput
     employees?: Array<IEmployeeInput>
+    successMessage: string
+    errorMessage: string
 }
 
 export type IEmployeeType = IEmployee & IEmployees

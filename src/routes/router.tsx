@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate, PathRouteProps, IndexRouteProps } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 import Admin from "../components/admin/home"
 import AdminHome from "../components/admin/admin"
@@ -9,17 +10,21 @@ import ValidateSession from "../shared/validation/validate-session"
 import AddEmployee from "../container/employee/add"
 
 type Props = {
-    children: PathRouteProps | IndexRouteProps | any
+    children: PathRouteProps | IndexRouteProps |any
 }
 
 const Router = () => {
-    const login = localStorage.getItem('login')
+    const login = useSelector((state: any) => state.userData.login)
     
     const ProtectedRoutes = ({ children }: Props) => {    
-        return login ? children : <Navigate to='/admin' />
+        // console.log("children in protected ", children)
+        console.log("login value : ", login)
+        return !login ? children : <Navigate to='/admin' />
     }
 
-    const PrivateRoutes = ({ children }: Props) => {    
+    const PrivateRoutes = ({ children }: Props) => {  
+        // console.log("children in private : ", children)  
+        console.log("login val : ", login)
         return login ? children : <Navigate to='/' />
     }
 
@@ -30,6 +35,12 @@ const Router = () => {
             <Routes>
                 <Route path='/login' element={<Login />} />
                 <Route path='/signup' element={<SignUp />} />
+
+                <Route path='/' element= {
+                    <ProtectedRoutes>
+                        <UserHome />
+                    </ProtectedRoutes>
+                } />
 
                 <Route path='/admin' element= {
                     <PrivateRoutes>
@@ -48,12 +59,6 @@ const Router = () => {
                         </PrivateRoutes> 
                     } />
                 </Route>
-
-                <Route path='/' element= {
-                    <ProtectedRoutes>
-                        <UserHome />
-                    </ProtectedRoutes>
-                } />
 
             </Routes>
         </>

@@ -9,10 +9,14 @@ const initialState = {
         age: 0,
         city: '',
         salary: 0
-    }
+    },
+    successMessage:'',
+    errorMessage:''
 }
 
 const employeeReducer = (state:IEmployeeState = initialState, action: IEmployeeType) => {
+    console.log("action : ", action)
+    
     switch(action.type) {
         case types.ADD_EMPLOYEE:
             return {

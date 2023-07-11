@@ -27,9 +27,9 @@ export const retreiveEmployee = (employee: IEmployeeInput) => ({
 })
 
 export const userLoggedIn = (user: IUserInput) =>  ({
-            type: 'LOGIN',
-            payload: user
-    })
+    type: 'LOGIN',
+    payload: user
+})
 
 
 export const userRegistered = (user: IUserInput) => ({

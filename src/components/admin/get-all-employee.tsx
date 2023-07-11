@@ -1,44 +1,60 @@
-import { Button } from "@mui/material";
+import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
-import { getAllEmployees } from "../../container/employee";
-import { IEmployees } from "../../shared/interface/employee.interface";
+import { getAllEmployees } from "../../container/employee"
+import { IEmployee, IEmployeeInput, IEmployeeState } from "../../shared/interface/employee.interface";
 
-const GetAllEmployeeComponent = () => {
+interface State {
+    employeeData: IEmployee;
+    state: IEmployeeState & IEmployee
+}
+
+const GetAllEmployee = () => {
 
     const navigate = useNavigate()
 
     useEffect(() => {
-        console.log("inside use-effect")
         getAllEmployees()
     }, [])
 
     const employees = useSelector((state: any) => state.employeeData.employees)
-    console.log("emp from state : ", employees)
 
     return (
         <>
-            <div>
+            <div>   
                 <h3>Retreiving all emps</h3>
-                {
-                    employees && employees.map((employee: any) => {
-                        return (
-                            <div>
-                                <table>
-                                    <td>Name: {employee.name}</td>
-                                    <td>Age: {employee.age}</td>
-                                    <td>Salary: {employee.salary}</td>
-                                </table>
-                            </div>
-                        )
-                    })
-                }
+                <TableContainer>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Id</TableCell>
+                                <TableCell>Name</TableCell>
+                                <TableCell>Age</TableCell>
+                                <TableCell>City</TableCell>
+                                <TableCell>Salary</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {
+                                employees && employees.map((employee: IEmployeeInput) => (
+                                    <TableRow key={employee.id}>
+                                        <TableCell>{employee.id}</TableCell>
+                                        <TableCell>{employee.name}</TableCell>
+                                        <TableCell>{employee.age}</TableCell>
+                                        <TableCell>{employee.city}</TableCell>
+                                        <TableCell>{employee.salary}</TableCell>
+                                    </TableRow>
+                                ))
+                            }
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             </div>
             <Button onClick={() => navigate('/admin/create')} >Add Employee</Button>
         </>
     )
 }
 
-export default GetAllEmployeeComponent
+export default GetAllEmployee

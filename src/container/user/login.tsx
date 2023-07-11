@@ -1,9 +1,10 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { Navigate, redirect } from "react-router";
+// import  {withRouter}  from "react-router-dom";
 import { Dispatch } from "redux";
 
-import {loginUser } from ".";
+import { loginUser } from ".";
 import LoginComponent from "../../components/user/login";
 import { IUserInput } from "../../shared/interface/user.interface";
 import { validateLogin } from "../../shared/validation/validate";
@@ -42,8 +43,6 @@ class Login extends Component<any, State> {
     handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
         const { name, value } = e.target
-        const { email, password } = this.state.credentials
-        const errors = validateLogin(this.state.credentials)
 
         this.setState((prev: { credentials: any }) => ({
             credentials: {
@@ -51,17 +50,29 @@ class Login extends Component<any, State> {
                 [name]: value
             }
         }))
-
-        if(!(email && password)) {
-            validateLogin(this.state.credentials)
-            this.setState({ errors })
-        }
     }
 
     loginHandler = () => {
-        this.props.loginUser(this.state.credentials)
+        const { email, password } = this.state.credentials
+        const errors = validateLogin(this.state.credentials)
 
-    }    
+        if(!(email && password)) {
+            this.setState({ errors })
+        } else {
+            this.props.loginUser(this.state.credentials)
+        }
+    } 
+
+    // componentDidUpdate(prevState) {
+    //     console.log("inside update")
+    //     if(this.props.login === true){
+    //         console.log("login if : ", this.props.login)
+    //         redirect('/admin')
+    //     } else {
+    //         console.log("login else : ", this.props.login)
+    //         redirect('/')
+    //     }
+    // }
 
     render() {
         const { successMessage, errorMessage, login } = this.props
@@ -72,7 +83,7 @@ class Login extends Component<any, State> {
                 {successMessage && <div>{successMessage}</div>}
                 {errorMessage && <div>{errorMessage}</div>}
                 {
-                    login? <Navigate to='/admin/' /> : <Navigate to='/' />
+                    login? <Navigate to='/admin' /> : <Navigate to='/' />
                 }
             </>
         )
@@ -93,4 +104,5 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     }
 }
 
+// export default withRouter(connect (mapStateToProps, mapDispatchToProps)(Login))
 export default connect (mapStateToProps, mapDispatchToProps)(Login)
