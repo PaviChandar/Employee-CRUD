@@ -1,4 +1,3 @@
-import GetAllEmployee from "../../container/employee/get-all-employee"
 import GetAllEmployeeComponent from "./get-all-employee"
 
 const Admin = () => {

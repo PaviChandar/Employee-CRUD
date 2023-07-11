@@ -27,34 +27,17 @@ export const retreiveEmployee = (employee: IEmployeeInput) => ({
 })
 
 export const userLoggedIn = (user: IUserInput) =>  ({
-    type: types.LOGIN_USER,
-    payload: user
-})
+            type: 'LOGIN',
+            payload: user
+    })
+
 
 export const userRegistered = (user: IUserInput) => ({
     type: types.REGISTER_USER,
     payload: user
 })
 
-export const isLogin = (login: IUserInput) => {
-    console.log("inside is-log cont : ", login)
-    return ({
+export const isLogin = (login: IUserInput) =>  ({
     type: 'IS_LOGIN',
     payload: login
-})}
-
-export const setMessage = (message: IUserInput) => {
-    console.log("inside action-ts : ", message)
-    return ({
-    type: 'SET_MESSAGE',
-    payload: message
-})}
-
-export const clearMessage = () => ({
-    type: types.CLEAR_MESSAGE
-})
-
-export const test = (message: any) => ({
-    type: 'TEST',
-    payload: message
 })

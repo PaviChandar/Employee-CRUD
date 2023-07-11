@@ -1,8 +1,8 @@
 import { createLogic } from "redux-logic"
 
 import { userLogin } from "../../api/user-resource"
-import { isLogin, setMessage, userLoggedIn } from "../action/action"
-import * as types from "../action/action-type"
+import { isLogin, userLoggedIn } from "../action/action"
+import { IS_LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS, LOGIN_USER } from "../action/action-type"
 
 const loginUser: any = createLogic({
     type: 'LOGIN_REQUEST',
@@ -11,20 +11,23 @@ const loginUser: any = createLogic({
         userLogin(user)
             .then((response) => {
                 localStorage.setItem('token', response.data.token)
-                // dispatch({
-                //     type: 'LOGIN_USER',
-                //     payload: user
-                // })
 
-                dispatch(setMessage(response.data.message))
+                dispatch(userLoggedIn(response.data.data))
+                dispatch({
+                    type:'LOGIN_SUCCESS',
+                    payload: response.data.message
+                })
                 dispatch(isLogin(response.data.data.login))
+                done()
             })
             .catch((error) => {
-                const message = error.response.data.message
-                console.log("Error from login response : ", message) 
-                return message
+                const message = error.response.data.message 
+                dispatch({
+                    type:LOGIN_FAILURE,
+                    payload: message
+                })
+                done()
             })
-            done()
     }
 })
 

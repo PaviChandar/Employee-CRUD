@@ -1,39 +1,19 @@
 import { Button } from '@mui/material'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
 
 import "../../assets/login.css"
-import { loginUser } from '../../container/user'
 import { IUserInput } from '../../shared/interface/user.interface'
-import { setMessage } from '../../store/action/action'
 
 type LoginProps = {
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-    // loginHandler: () => void
+    loginHandler: () => void
     someState: IUserInput
     errors: IUserInput
 }
 
-const LoginComponent: React.FC<LoginProps> = ({ handleChange, someState, errors }) => {
+const LoginComponent: React.FC<LoginProps> = ({ handleChange, loginHandler, someState, errors }) => {
 
     const navigate = useNavigate()
-    const dispatch = useDispatch()
-
-    const [msg, setMsg] = useState<any>("")
-
-    const handleLogin = () => {
-        console.log("cred inside handle : ", someState)
-        dispatch(loginUser(someState))
-        dispatch({
-            type: 'SET_MESSAGE',
-            payload: msg
-        })
-        // dispatch(setMessage(msg))
-        setMsg(msg)
-
-        // alert(msg)
-    }
 
     return (
         <div className="loginContainer">
@@ -48,7 +28,7 @@ const LoginComponent: React.FC<LoginProps> = ({ handleChange, someState, errors 
                 </div>
             </form>
             <Button color='secondary' sx={{backgroundColor: "ButtonHighlight"}}
-                onClick={handleLogin} 
+                onClick={loginHandler} 
             >
                 Login
             </Button>

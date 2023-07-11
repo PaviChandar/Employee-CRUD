@@ -1,22 +1,21 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, redirect } from "react-router";
 import { Dispatch } from "redux";
 
-import { isLogin , loginUser } from ".";
+import {loginUser } from ".";
 import LoginComponent from "../../components/user/login";
 import { IUserInput } from "../../shared/interface/user.interface";
-import { localStorageKey } from "../../shared/storage/token";
 import { validateLogin } from "../../shared/validation/validate";
-import { setMessage, userLoggedIn } from "../../store/action/action";
-// import loginUser from "../../store/logic/login";
 
 interface State {
     credentials: IUserInput
     success: boolean
     errors: any
     login: boolean
-    message: string
+    userData: any
+    successMessage: string | null
+    errorMessage: string | null
 }
 
 class Login extends Component<any, State> {
@@ -31,7 +30,9 @@ class Login extends Component<any, State> {
             success: false,
             errors: {},
             login:false,
-            message:""
+            successMessage:"",
+            errorMessage:"",
+            userData: {}
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -59,21 +60,31 @@ class Login extends Component<any, State> {
 
     loginHandler = () => {
         this.props.loginUser(this.state.credentials)
+
     }    
 
     render() {
+        const { successMessage, errorMessage, login } = this.props
 
         return (
             <>
-                <LoginComponent handleChange={this.handleChange} someState={this.state.credentials} errors={this.state.errors} />
+                <LoginComponent handleChange={this.handleChange} loginHandler={this.loginHandler} someState={this.state.credentials} errors={this.state.errors} />
+                {successMessage && <div>{successMessage}</div>}
+                {errorMessage && <div>{errorMessage}</div>}
                 {
-                    this.props.login? <Navigate to='/admin'/>: <Navigate to='/' />
+                    login? <Navigate to='/admin/' /> : <Navigate to='/' />
                 }
             </>
         )
    }
 
 }
+
+const mapStateToProps = (state: State) =>  ({
+    successMessage: state.userData.successMessage,
+    errorMessage: state.userData.errorMessage,
+    login: state.userData.user.login
+})
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     
@@ -82,4 +93,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     }
 }
 
-export default connect (null, mapDispatchToProps)(Login)
+export default connect (mapStateToProps, mapDispatchToProps)(Login)

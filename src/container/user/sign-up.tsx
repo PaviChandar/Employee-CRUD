@@ -29,7 +29,6 @@ class SignUp extends Component<any, State> {
     }
 
     handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("name, value : " ,e.target.name, e.target.value )
         e.preventDefault()
         const { name, value } = e.target
 
@@ -47,8 +46,6 @@ class SignUp extends Component<any, State> {
             alert('Enter required details')
         } else {
             this.props.registerUser(this.state.credentials)
-            alert("User registered successfully!")
-            // this.setState({ success: true })
         }
     }
 
@@ -56,9 +53,6 @@ class SignUp extends Component<any, State> {
         return (
             <div>
                 <SignUpComponent handleChange={this.handleChange} handleSignUp={this.handleSignUp} someState={this.state.credentials} />
-                {/* {
-                    this.state.success? <Navigate to='/login' />: null
-                } */}
             </div>
         )
     }
