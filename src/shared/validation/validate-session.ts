@@ -16,7 +16,7 @@ function ValidateSession() {
         if(!ValidateSession()) {
             navigate('/login')
         }
-    },[])
+    },[navigate])
 }
 
 export default ValidateSession

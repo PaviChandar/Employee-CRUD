@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
-import { getAllEmployees } from "../../container/employee"
+import { deleteEmployee, getAllEmployees } from "../../container/employee"
 import { IEmployee, IEmployeeInput, IEmployeeState } from "../../shared/interface/employee.interface";
 
 interface State {
@@ -21,6 +21,11 @@ const GetAllEmployee = () => {
 
     const employees = useSelector((state: any) => state.employeeData.employees)
 
+    const handleDelete = (id: number) => {
+        console.log("inside handle delete", id)
+        deleteEmployee(id)
+    }
+
     return (
         <>
             <div>   
@@ -29,7 +34,6 @@ const GetAllEmployee = () => {
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell>Id</TableCell>
                                 <TableCell>Name</TableCell>
                                 <TableCell>Age</TableCell>
                                 <TableCell>City</TableCell>
@@ -40,12 +44,13 @@ const GetAllEmployee = () => {
                             {
                                 employees && employees.map((employee: IEmployeeInput) => (
                                     <TableRow key={employee.id}>
-                                        <TableCell>{employee.id}</TableCell>
                                         <TableCell>{employee.name}</TableCell>
                                         <TableCell>{employee.age}</TableCell>
                                         <TableCell>{employee.city}</TableCell>
                                         <TableCell>{employee.salary}</TableCell>
-                                    </TableRow>
+                                        <Button onClick={() => navigate(`/admin/edit/${employee.id}`)} >Edit</Button>
+                                        <Button onClick={() => handleDelete(employee.id)} >Delete</Button>
+                                    </TableRow>                                    
                                 ))
                             }
                         </TableBody>

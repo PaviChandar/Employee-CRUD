@@ -2,7 +2,7 @@ import { createLogic } from "redux-logic"
 
 import { userLogin } from "../../api/user-resource"
 import { isLogin, userLoggedIn } from "../action/action"
-import { IS_LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS, LOGIN_USER } from "../action/action-type"
+import { LOGIN_FAILURE, LOGIN_SUCCESS } from "../action/action-type"
 
 const loginUser: any = createLogic({
     type: 'LOGIN_REQUEST',
@@ -14,7 +14,7 @@ const loginUser: any = createLogic({
 
                 dispatch(userLoggedIn(response.data.data))
                 dispatch({
-                    type:'LOGIN_SUCCESS',
+                    type:LOGIN_SUCCESS,
                     payload: response.data.message
                 })
                 dispatch(isLogin(response.data.data.login))

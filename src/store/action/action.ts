@@ -2,10 +2,12 @@ import { IEmployeeInput } from "../../shared/interface/employee.interface";
 import { IUserInput } from "../../shared/interface/user.interface";
 import * as types from "../action/action-type"
 
-export const registerEmployee = (employee: IEmployeeInput) => ({
+export const registerEmployee = (employee: IEmployeeInput) => {
+    console.log("inside add cont : ", employee)
+    return ({
     type: types.ADD_EMPLOYEE,
     payload: employee
-})
+})}
 
 export const upgradeEmployee = (employee: IEmployeeInput) => ({
     type: types.UPDATE_EMPLOYEE,

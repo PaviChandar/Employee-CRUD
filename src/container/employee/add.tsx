@@ -1,20 +1,92 @@
 import { Component } from "react";
-import AddNewEmployee from "../../components/admin/add";
+import { connect } from "react-redux";
+import { Navigate } from "react-router";
+import { Dispatch } from "redux";
 
-class AddEmployee extends Component {
+import { addEmployee } from ".";
+import AddNewEmployee from "../../components/admin/add";
+import { IEmployeeInput } from "../../shared/interface/employee.interface";
+import { validateEmployee } from "../../shared/validation/validate-employee";
+
+interface State {
+    credentials: IEmployeeInput
+    success: boolean
+    errors: any
+    successMessage: string | null
+    errorMessage: string | null
+}
+
+class AddEmployee extends Component<any, State> {
     
+    constructor(props: Object) {
+        super(props)
+        this.state = {
+            credentials: {
+                id:0,
+                name:'',
+                age:0,
+                city:'',
+                salary:0
+            },
+            success: false,
+            errors: {},
+            successMessage:"",
+            errorMessage:"",
+        }
+
+        this.addHandler = this.addHandler.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange = (e: React.ChangeEvent<HTMLInputElement| HTMLSelectElement>) => {
+        e.preventDefault()
+        const { name, value } = e.target
+        this.setState((prev) => ({
+            credentials: {
+                ...prev.credentials,
+                [name]: value
+            }
+        }))
+
+    }
 
     addHandler = () => {
-        console.log("inside add handler")
+        const { id,name,age,city,salary } = this.state.credentials
+        const errors = validateEmployee(this.state.credentials)
+
+        if(!(id && name && age && city && salary)) {
+            this.setState({ errors })
+        } else {
+            this.props.addEmployee(this.state.credentials)
+            this.setState({ success: true })
+        }
     }
 
     render() {
+        const { successMessage, errorMessage } = this.props
+
         return (
-            <>
-                <AddNewEmployee addHandler={this.addHandler} />
+            <>  
+                <AddNewEmployee addHandler={this.addHandler} handleChange={this.handleChange} stateValue= {this.state.credentials} errors={this.state.errors} />
+                {successMessage && <div>{successMessage}</div> }
+                {errorMessage && <div>{errorMessage}</div>}
+                {
+                    this.state.success && successMessage? <Navigate to='/admin' /> : null
+                }
             </>
         )
     }
 }
 
-export default AddEmployee
+const mapDispatchToProps = (dispatch: Dispatch) => {
+    return {
+        addEmployee : (credentials: IEmployeeInput) => dispatch(addEmployee(credentials))
+    }
+}
+
+const mapStateToProps = (state: any) => ({
+    successMessage: state.employeeData.successMessage,
+    errorMessage: state.employeeData.errorMessage
+})
+
+export default connect (mapStateToProps, mapDispatchToProps)(AddEmployee)

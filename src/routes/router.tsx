@@ -8,6 +8,7 @@ import Login from "../container/user/login"
 import SignUp from "../container/user/sign-up"
 import ValidateSession from "../shared/validation/validate-session"
 import AddEmployee from "../container/employee/add"
+import EditEmployee from "../container/employee/update"
 
 type Props = {
     children: PathRouteProps | IndexRouteProps |any
@@ -16,19 +17,15 @@ type Props = {
 const Router = () => {
     const login = useSelector((state: any) => state.userData.login)
     
-    const ProtectedRoutes = ({ children }: Props) => {    
-        // console.log("children in protected ", children)
-        console.log("login value : ", login)
-        return !login ? children : <Navigate to='/admin' />
-    }
+    // const ProtectedRoutes = ({ children }: Props) => { 
+    //     return !login ? children : <Navigate to='/admin' />
+    // }
 
-    const PrivateRoutes = ({ children }: Props) => {  
-        // console.log("children in private : ", children)  
-        console.log("login val : ", login)
-        return login ? children : <Navigate to='/' />
-    }
+    // const PrivateRoutes = ({ children }: Props) => { 
+    //     return login ? children : <Navigate to='/' />
+    // }
 
-    ValidateSession()
+    // ValidateSession()
 
     return (
         <>
@@ -37,27 +34,34 @@ const Router = () => {
                 <Route path='/signup' element={<SignUp />} />
 
                 <Route path='/' element= {
-                    <ProtectedRoutes>
+                    // <ProtectedRoutes>
                         <UserHome />
-                    </ProtectedRoutes>
+                    // </ProtectedRoutes>
                 } />
 
                 <Route path='/admin' element= {
-                    <PrivateRoutes>
+                    // <PrivateRoutes>
                         <AdminHome />
-                    </PrivateRoutes>
-                } >
+                    // </PrivateRoutes>
+                    } >
+
                     <Route path='' element= {
-                        <PrivateRoutes>
+                        // <PrivateRoutes>
                             <Admin />
-                        </PrivateRoutes>
-                } />
+                        // </PrivateRoutes>
+                    } />
 
                     <Route path='create' element= {
-                        <PrivateRoutes>
+                        // <PrivateRoutes>
                             <AddEmployee />
-                        </PrivateRoutes> 
+                        // </PrivateRoutes> 
                     } />
+
+                    <Route path='edit/:id' element= {
+                        <EditEmployee />
+                    }
+                    />
+
                 </Route>
 
             </Routes>

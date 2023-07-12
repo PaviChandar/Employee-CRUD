@@ -1,13 +1,13 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { Navigate, redirect } from "react-router";
+import { Navigate } from "react-router";
 // import  {withRouter}  from "react-router-dom";
 import { Dispatch } from "redux";
 
 import { loginUser } from ".";
 import LoginComponent from "../../components/user/login";
 import { IUserInput } from "../../shared/interface/user.interface";
-import { validateLogin } from "../../shared/validation/validate";
+import { validateLogin } from "../../shared/validation/validate-user";
 
 interface State {
     credentials: IUserInput
@@ -62,17 +62,6 @@ class Login extends Component<any, State> {
             this.props.loginUser(this.state.credentials)
         }
     } 
-
-    // componentDidUpdate(prevState) {
-    //     console.log("inside update")
-    //     if(this.props.login === true){
-    //         console.log("login if : ", this.props.login)
-    //         redirect('/admin')
-    //     } else {
-    //         console.log("login else : ", this.props.login)
-    //         redirect('/')
-    //     }
-    // }
 
     render() {
         const { successMessage, errorMessage, login } = this.props

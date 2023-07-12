@@ -5,7 +5,6 @@ const nameRegex = /^[A-Za-z][A-Za-z ]{7,29}$/
 const passwordRegex = /^[a-zA-Z0-9]{7,20}$/
 
 export const validateLogin = (value: IUserInput) => {
-    // const errors: IUserInput = { email: "", password: "" }
     const errors: any = {}
 
     if(!value.email) {

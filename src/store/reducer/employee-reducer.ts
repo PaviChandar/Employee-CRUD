@@ -1,4 +1,4 @@
-import { IEmployeeInput, IEmployeeState, IEmployeeType } from "../../shared/interface/employee.interface"
+import { IEmployeeState, IEmployeeType } from "../../shared/interface/employee.interface"
 import * as types from "../action/action-type"
 
 const initialState = {
@@ -19,9 +19,19 @@ const employeeReducer = (state:IEmployeeState = initialState, action: IEmployeeT
     
     switch(action.type) {
         case types.ADD_EMPLOYEE:
+            console.log("inside add red : ", action.payload)
             return {
                 ...state,
-                employee: action.payload
+                employee: action.payload,
+                successMessage:action.payload.message,
+                errorMessage:null
+            }
+        case 'ADD_EMPLLOYEE_FAILURE' :
+            return {
+                ...state,
+                employee: action.payload,
+                successMessage:null,
+                errorMessage:action.payload
             }
         case types.UPDATE_EMPLOYEE:
             return {
@@ -29,6 +39,7 @@ const employeeReducer = (state:IEmployeeState = initialState, action: IEmployeeT
                 employee: action.payload
             }
         case types.DELETE_EMPLOYEE:
+            console.log("inside del red : ", action.payload)
             return {
                 ...state,
                 employee: action.payload
