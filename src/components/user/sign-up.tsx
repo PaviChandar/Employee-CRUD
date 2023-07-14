@@ -33,7 +33,7 @@ const SignUpComponent: React.FC<SignProps> = ({ handleSignUp, handleChange, some
                 SignUp
             </Button>
             <Button color="info" variant="contained" sx={{backgroundColor: "black"}}
-                onClick={() => navigate('/login')}
+                onClick={() => navigate('/')}
             >
                 Login
             </Button>

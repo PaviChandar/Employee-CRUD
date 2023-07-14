@@ -15,11 +15,10 @@ const initialState = {
 }
 
 const employeeReducer = (state:IEmployeeState = initialState, action: IEmployeeType) => {
-    console.log("action : ", action)
-    
+    console.log("action in emp red : ", action)
+
     switch(action.type) {
         case types.ADD_EMPLOYEE:
-            console.log("inside add red : ", action.payload)
             return {
                 ...state,
                 employee: action.payload,
@@ -39,7 +38,6 @@ const employeeReducer = (state:IEmployeeState = initialState, action: IEmployeeT
                 employee: action.payload
             }
         case types.DELETE_EMPLOYEE:
-            console.log("inside del red : ", action.payload)
             return {
                 ...state,
                 employee: action.payload

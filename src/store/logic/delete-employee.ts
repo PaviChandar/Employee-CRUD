@@ -7,10 +7,8 @@ const removeEmployees: any = createLogic({
     type: 'REMOVE_EMPLOYEE',
     async process({ action }: any, dispatch, done) {
         const id = action.payload
-        console.log("id in delete : ", id)
         excludeEmployee(id)
             .then(function (response) {
-                console.log("del res : ", response)
                 dispatch(removeEmployee())
                 // done()
             })

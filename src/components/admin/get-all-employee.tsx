@@ -1,5 +1,6 @@
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
@@ -14,6 +15,7 @@ interface State {
 const GetAllEmployee = () => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         getAllEmployees()
@@ -22,8 +24,7 @@ const GetAllEmployee = () => {
     const employees = useSelector((state: any) => state.employeeData.employees)
 
     const handleDelete = (id: number) => {
-        console.log("inside handle delete", id)
-        deleteEmployee(id)
+        dispatch(deleteEmployee(id))
     }
 
     return (

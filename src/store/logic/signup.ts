@@ -7,7 +7,6 @@ const signUpUser: any = createLogic({
     type:'SIGN_UP',
     async process({ action }: any, dispatch, done) {
         const user = action.payload
-        console.log("action in logic : ", action)
         userRegister(user)
             .then(function(response) {
                 dispatch(userRegistered(response.data.data))

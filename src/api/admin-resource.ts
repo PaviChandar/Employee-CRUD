@@ -18,6 +18,5 @@ export const editEmployee = (employee: IEmployeeInput, id: number) => {
 }
 
 export const excludeEmployee = (id: any) => {
-    console.log("inside api del", id)
     return axiosInstance.delete(`/employees/${id}`, id)
 }

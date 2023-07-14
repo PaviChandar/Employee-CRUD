@@ -6,10 +6,7 @@ const App = () => {
   const { t } = useTranslation()
 
   return (
-    <div>
-      <h1>{t('details')}</h1>
-      <Router />
-    </div>
+    <Router />
   )
 }
 

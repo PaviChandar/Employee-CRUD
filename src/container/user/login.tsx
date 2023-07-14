@@ -72,8 +72,12 @@ class Login extends Component<any, State> {
                 {successMessage && <div>{successMessage}</div>}
                 {errorMessage && <div>{errorMessage}</div>}
                 {
-                    login? <Navigate to='/admin' /> : <Navigate to='/' />
+                    login ? <Navigate to='/admin' /> : <Navigate to='/' />
                 }
+
+                {/* {
+                    login? <div>hiiiiiiiiiii admin</div> : <div>helooooooo user</div>
+                } */}
             </>
         )
    }

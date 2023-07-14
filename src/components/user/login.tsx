@@ -1,4 +1,5 @@
 import { Button } from '@mui/material'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 
 import "../../assets/login.css"
@@ -38,6 +39,8 @@ const LoginComponent: React.FC<LoginProps> = ({ handleChange, loginHandler, some
             >
                 SignUp
             </Button>
+
+            {/* <button onClick={() => navigate('/signup/new')} >sample</button> */}
         </div>
     )
 
