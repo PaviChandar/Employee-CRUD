@@ -1,35 +1,37 @@
 import { Component } from "react";
 import { connect } from "react-redux";
+import { Navigate } from "react-router";
 import { Dispatch } from "redux";
-import { getSingleEmployee, updateEmployee } from ".";
-import { URLSearchParams } from "url";
 
+import { getSingleEmployee, updateEmployee } from ".";
 import EditComponent from "../../components/admin/update";
 import { IEmployeeInput } from "../../shared/interface/employee.interface";
 import { validateEmployee } from "../../shared/validation/validate-employee";
 import withRouter from "../withRouter";
 
 interface State {
-    credentials: IEmployeeInput
     success: boolean
     errors: any
-    editState: any
+    editState: IEmployeeInput
+    successMessage: string | null
+    errorMessage: string | null
 }
 
 class EditEmployee extends Component<any,State> {
     constructor(props: any) {
         super(props)
         this.state = {
-            credentials: {  
+            success: false,
+            errors: {},
+            editState: {
                 id:0,
                 name:'',
                 age:0,
                 city:'',
                 salary:0
             },
-            success: false,
-            errors: {},
-            editState: {}
+            successMessage: "",
+            errorMessage:""
         }
 
         this.editHandler = this.editHandler.bind(this)
@@ -41,9 +43,10 @@ class EditEmployee extends Component<any,State> {
         this.props.getSingleEmployee(id)
     }
 
-    componentDidUpdate(prevProps: { data: any; }, prevState: any) {
-        if (prevProps.data !== this.props.data)
-          this.setState({ editState: this.props.data });
+    componentDidUpdate(prevProps: { data: any }, prevState: any) {
+        if (prevProps.data !== this.props.data) {
+            this.setState({ editState: this.props.data })
+        }
     }
 
     handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -54,7 +57,7 @@ class EditEmployee extends Component<any,State> {
               ...prev.editState,
               [name]: value,
             })
-          }))
+        }))
     }
 
     editHandler = () => {
@@ -70,15 +73,15 @@ class EditEmployee extends Component<any,State> {
     }
 
     render() {
+        const { message } = this.props
         
         return (
             <>
-            {console.log(" state props ; ", this.props.data)}
-            {console.log("edit state in return : ", this.state.editState)}
-                <EditComponent editHandler={this.editHandler} 
-                handleChange= {this.handleChange} 
-                stateValue={this.state.editState}
-                 errors={this.state.errors} />
+                <EditComponent editHandler={this.editHandler} handleChange= {this.handleChange} stateValue={this.state.editState} errors={this.state.errors} />
+                { message && <div>{message}</div>}
+                {
+                    this.state.success? <Navigate to='/admin' /> : null
+                }
             </>
         )
     }
@@ -86,13 +89,14 @@ class EditEmployee extends Component<any,State> {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        updateEmployee : (credentials: IEmployeeInput) => dispatch(updateEmployee(credentials)),
+        updateEmployee : (editState: IEmployeeInput) => dispatch(updateEmployee(editState)),
         getSingleEmployee: (id: number) => dispatch(getSingleEmployee(id))
     }
 }
 
 const mapStateToProps = (state: any) => ({
-    data: state.employeeData.employee
+    data: state.employeeData.employee,
+    message: state.employeeData.employee.message,
 })
 
 export default withRouter(connect (mapStateToProps,mapDispatchToProps) (EditEmployee))

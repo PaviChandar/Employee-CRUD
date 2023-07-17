@@ -1,7 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router";
-// import  {withRouter}  from "react-router-dom";
 import { Dispatch } from "redux";
 
 import { loginUser } from ".";
@@ -63,6 +62,12 @@ class Login extends Component<any, State> {
         }
     } 
 
+    componentDidUpdate(prevProps: { login: boolean }, prevState: any) {
+        if (prevProps.login !== this.props.login) {
+            this.setState(this.props.user)
+        }    
+    }
+
     render() {
         const { successMessage, errorMessage, login } = this.props
 
@@ -72,12 +77,8 @@ class Login extends Component<any, State> {
                 {successMessage && <div>{successMessage}</div>}
                 {errorMessage && <div>{errorMessage}</div>}
                 {
-                    login ? <Navigate to='/admin' /> : <Navigate to='/' />
+                    !login ? <Navigate to='/home' /> : <Navigate to='/admin' />
                 }
-
-                {/* {
-                    login? <div>hiiiiiiiiiii admin</div> : <div>helooooooo user</div>
-                } */}
             </>
         )
    }
@@ -87,7 +88,8 @@ class Login extends Component<any, State> {
 const mapStateToProps = (state: State) =>  ({
     successMessage: state.userData.successMessage,
     errorMessage: state.userData.errorMessage,
-    login: state.userData.user.login
+    login: state.userData.user.login,
+    user: state.userData.user
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -97,5 +99,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     }
 }
 
-// export default withRouter(connect (mapStateToProps, mapDispatchToProps)(Login))
 export default connect (mapStateToProps, mapDispatchToProps)(Login)

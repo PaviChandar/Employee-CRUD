@@ -10,9 +10,7 @@ interface EditProps {
 }
 
 const EditComponent: React.FC<EditProps> = ({ editHandler, handleChange, stateValue, errors }) => {
-
-    console.log("state value : ", stateValue)
-
+    
     return (
         <>
         <h1>Edit employee</h1>

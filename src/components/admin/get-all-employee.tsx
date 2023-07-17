@@ -1,5 +1,6 @@
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
@@ -8,7 +9,7 @@ import { deleteEmployee, getAllEmployees } from "../../container/employee"
 import { IEmployee, IEmployeeInput, IEmployeeState } from "../../shared/interface/employee.interface";
 
 interface State {
-    employeeData: IEmployee;
+    employeeData: IEmployee
     state: IEmployeeState & IEmployee
 }
 
@@ -16,6 +17,7 @@ const GetAllEmployee = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { t } = useTranslation()
 
     useEffect(() => {
         getAllEmployees()
@@ -49,8 +51,12 @@ const GetAllEmployee = () => {
                                         <TableCell>{employee.age}</TableCell>
                                         <TableCell>{employee.city}</TableCell>
                                         <TableCell>{employee.salary}</TableCell>
-                                        <Button onClick={() => navigate(`/admin/edit/${employee.id}`)} >Edit</Button>
-                                        <Button onClick={() => handleDelete(employee.id)} >Delete</Button>
+                                        <TableCell>
+                                            <Button onClick={() => navigate(`/admin/edit/${employee.id}`)}>{t("update_button")}</Button>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Button onClick={() => handleDelete(employee.id)}>{t("delete_button")}</Button>
+                                        </TableCell>
                                     </TableRow>                                    
                                 ))
                             }
@@ -58,7 +64,7 @@ const GetAllEmployee = () => {
                     </Table>
                 </TableContainer>
             </div>
-            <Button onClick={() => navigate('/admin/create')} >Add Employee</Button>
+            <Button onClick={() => navigate('/admin/create')}>Add Employee</Button>
         </>
     )
 }

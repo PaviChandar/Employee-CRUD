@@ -1,13 +1,13 @@
-import { ConnectingAirportsOutlined } from "@mui/icons-material"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+
+import { localStorageKey } from "../storage/token"
 
 function ValidateSession() {
     const navigate = useNavigate()
 
     const validateSession = () => {
-        const token = localStorage.getItem('token')
-        console.log("token : ", token);
+        const token = localStorageKey('token')
         
         if(!token){
             return true
@@ -17,8 +17,7 @@ function ValidateSession() {
 
     useEffect(() => {
         if(validateSession()) {
-            console.log('navigate to log')
-            navigate('/login')
+            navigate('/')
         }
     },[window.location.pathname])
 

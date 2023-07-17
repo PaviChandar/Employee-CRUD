@@ -1,5 +1,4 @@
-import { Routes, Route, PathRouteProps, IndexRouteProps, Navigate, useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { Routes, Route, PathRouteProps, IndexRouteProps, useNavigate, Navigate } from "react-router-dom"
 
 import Admin from "../components/admin/home"
 import AdminHome from "../components/admin/admin"
@@ -9,36 +8,33 @@ import SignUp from "../container/user/sign-up"
 import ValidateSession from "../shared/validation/validate-session"
 import AddEmployee from "../container/employee/add"
 import EditEmployee from "../container/employee/update"
-import SignNew from "../components/user/signnew"
-import { useEffect } from "react"
+import { localStorageKey } from "../shared/storage/token"
+import jwtDecode from "jwt-decode"
+import { useSelector } from "react-redux"
 
 type Props = {
     children: PathRouteProps | IndexRouteProps |any
 }
 
 const Router = () => {
-    // const login = useSelector((state: any) => state.userData.login)
 
-    const navigate= useNavigate()
-    
-    // const ProtectedRoutes = ({ children }: Props) => { 
-    //     return login ? children : <Navigate to='/admin' />
-    // }
+    const loginValue = useSelector((state: any) => state.userData.login)
 
-    // const PrivateRoutes = ({ children }: Props) => { 
-    //     return login ? children : <Navigate to='/' />
-    // }   
+    const ProtectedRoutes = ({ children }: Props) => {
+        return loginValue ? children : <Navigate to='/admin' />
+    }
 
-    // ValidateSession()
-    
+    const PrivateRoutes = ({ children }: Props) => { 
+        return loginValue ? children : <Navigate to='/home' />
+    }   
+
+    ValidateSession() 
 
     return (
         <>
             <Routes>
                 <Route path='/' element={<Login />} />
                 <Route path='/signup' element={<SignUp />} />
-
-                <Route path='/signup/new' element={<SignNew />} />
 
                 <Route path='/home' element= {
                     // <ProtectedRoutes>
@@ -47,30 +43,29 @@ const Router = () => {
                 } />
 
                 <Route path='/admin' element= {
-                    // <PrivateRoutes>
+                    <PrivateRoutes>
                         <AdminHome />
-                    // </PrivateRoutes>
+                    </PrivateRoutes>
                     } >
 
                     <Route path='' element= {
-                        // <PrivateRoutes>
+                        <PrivateRoutes>
                             <Admin />
-                        //  </PrivateRoutes>
+                        </PrivateRoutes>
                     } />
 
                     <Route path='create' element= {
-                        // <PrivateRoutes>
+                        <PrivateRoutes>
                             <AddEmployee />
-                        //  </PrivateRoutes> 
+                        </PrivateRoutes> 
                     } />
 
                     <Route path='edit/:id' element= {
-                        // <PrivateRoutes>
+                        <PrivateRoutes>
                             <EditEmployee />
-                        // </PrivateRoutes>
+                        </PrivateRoutes>
                     }
                     />
-
                 </Route>
             </Routes>
         </>
