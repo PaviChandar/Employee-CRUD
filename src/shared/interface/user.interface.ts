@@ -1,4 +1,5 @@
 export interface IUserInput {
+    id?: number
     email?: string,
     password?: string
     username?: string

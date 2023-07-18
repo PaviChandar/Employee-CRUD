@@ -13,5 +13,10 @@ export const isLogin = (login: boolean) => {
 }
 
 export const editUser = (user: IUserInput) => {
-    return ({ type: 'EDIT_USER', payload: user})
+    return ({ type: 'EDIT_USER', payload: user })
+}
+
+export const viewUser = (id: number) => {
+    console.log("id in index : ", id)
+    return ({ type: 'GET_SINGLE_USER', payload: id })
 }

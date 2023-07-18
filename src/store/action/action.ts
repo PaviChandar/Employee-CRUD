@@ -46,3 +46,8 @@ export const upgradeUser = (user: IUserInput) => ({
     type: types.UPDATE_USER,
     payload: user
 })
+
+export const getSingleUser = (user: IUserInput) => ({
+    type: types.VIEW_USER,
+    payload: user
+})

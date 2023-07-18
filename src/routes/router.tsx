@@ -11,6 +11,7 @@ import EditEmployee from "../container/employee/update"
 import { localStorageKey } from "../shared/storage/token"
 import jwtDecode from "jwt-decode"
 import { useSelector } from "react-redux"
+import EditUser from "../container/user/edit-user"
 
 type Props = {
     children: PathRouteProps | IndexRouteProps |any
@@ -41,6 +42,8 @@ const Router = () => {
                         <UserHome />
                     // </ProtectedRoutes>
                 } />
+
+                <Route path='/edit/:id' element={<EditUser />} />
 
                 <Route path='/admin' element= {
                     <PrivateRoutes>
