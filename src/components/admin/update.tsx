@@ -16,7 +16,7 @@ const EditComponent: React.FC<EditProps> = ({ editHandler, handleChange, stateVa
         <h1>Edit employee</h1>
         <form>
             <div>
-                <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={stateValue.id} />
+                <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={stateValue.id} readOnly />
                 <span className="error" >{errors.id}</span>
             </div>
             <div>
