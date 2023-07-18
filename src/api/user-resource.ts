@@ -8,3 +8,7 @@ export const userLogin = (user: IUserInput) => {
 export const userRegister = (user: IUserInput) => {
     return axiosInstance.post('/users', user)
 }
+
+export const userUpdate = (user: IUserInput, id: number) => {
+    return axiosInstance.put(`/users/${id}`, user)
+}

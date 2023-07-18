@@ -11,3 +11,7 @@ export const registerUser = (user: IUserInput) => {
 export const isLogin = (login: boolean) => {
     return ({ type: 'IS_LOGIN', payload: login })
 }
+
+export const editUser = (user: IUserInput) => {
+    return ({ type: 'EDIT_USER', payload: user})
+}

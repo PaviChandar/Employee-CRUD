@@ -2,14 +2,14 @@ export interface IUserInput {
     email?: string,
     password?: string
     username?: string
-    login?: boolean
+    login?: boolean| null
     message?: string
 }
 
 export interface IUserState {
     user?: IUserInput;
     users?: Array<IUserInput>
-    login?: boolean
+    login?: boolean| null
     successMessage: string
     errorMessage: string
 }

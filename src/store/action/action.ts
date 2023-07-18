@@ -41,3 +41,8 @@ export const isLogin = (login: IUserInput) =>  ({
     type: 'IS_LOGIN',
     payload: login
 })
+
+export const upgradeUser = (user: IUserInput) => ({
+    type: types.UPDATE_USER,
+    payload: user
+})

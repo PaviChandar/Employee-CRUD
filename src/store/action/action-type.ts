@@ -2,6 +2,7 @@ export const LOGIN_USER = "LOGIN_USER"
 export const USER = "USER"
 export const REGISTER_USER = "REGISTER_USER"
 export const IS_LOGIN = "IS_LOGIN"
+export const UPDATE_USER = "UPDATE_USER"
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 export const LOGIN_FAILURE = "LOGIN_FAILURE"
