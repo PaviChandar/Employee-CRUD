@@ -12,7 +12,6 @@ interface State {
     credentials: IUserInput
     success: boolean
     errors: any
-    login: boolean
     userData: any
     successMessage: string | null
     errorMessage: string | null
@@ -29,7 +28,6 @@ class Login extends Component<any, State> {
             },
             success: false,
             errors: {},
-            login:false,
             successMessage:"",
             errorMessage:"",
             userData: {}
@@ -77,7 +75,7 @@ class Login extends Component<any, State> {
                 {successMessage && <div>{successMessage}</div>}
                 {errorMessage && <div>{errorMessage}</div>}
                 {
-                    !login ? <Navigate to='/home' /> : <Navigate to='/admin' />
+                    login  !== null && (login ? <Navigate to='/admin'></Navigate> :  <Navigate to='/user'></Navigate>)
                 }
             </>
         )

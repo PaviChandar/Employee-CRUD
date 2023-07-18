@@ -7,7 +7,7 @@ const initialState: IUserState| IUserInput = {
         email:'',
         password:'',
         username:'',
-        login: false,
+        login: null,
     },
     successMessage: '',
     errorMessage: '',
