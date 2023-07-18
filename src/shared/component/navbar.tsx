@@ -7,6 +7,7 @@ import { decodeTokenValue, removeToken } from "../storage/token"
 const Navbar = () => {
 
     const decodeValue = decodeTokenValue()
+    
     const navigate = useNavigate()
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
