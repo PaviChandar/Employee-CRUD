@@ -51,3 +51,8 @@ export const getSingleUser = (user: IUserInput) => ({
     type: types.VIEW_USER,
     payload: user
 })
+
+export const retreiveAllUser = (user: IUserInput) => ({
+    type: types.GET_USERS,
+    payload: user
+})

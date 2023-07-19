@@ -1,5 +1,5 @@
 import { IUserInput, IUserState, IUserType } from "../../shared/interface/user.interface"
-import { IS_LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS, REGISTER_SUCCESS, REGISTER_USER, UPDATE_USER, VIEW_USER } from "../action/action-type";
+import { GET_USERS, IS_LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS, REGISTER_SUCCESS, REGISTER_USER, UPDATE_USER, VIEW_USER } from "../action/action-type";
 
 const initialState: IUserState| IUserInput = {
     users:[],
@@ -33,6 +33,11 @@ const userReducer = (state: IUserState= initialState, action: IUserType) => {
                 ...state,
                 user: action.payload
             }
+        case GET_USERS:
+            return {
+                ...state,
+                users: action.payload
+            }
         case 'LOGIN':
             return {
                 ...state,
@@ -41,7 +46,7 @@ const userReducer = (state: IUserState= initialState, action: IUserType) => {
                 errorMessage: null
             }
         case IS_LOGIN:
-            return {
+            return {    
                 ...state,
                 login: action.payload
             }

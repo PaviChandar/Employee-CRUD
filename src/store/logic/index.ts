@@ -3,6 +3,7 @@ import removeEmployees from "./delete-employee";
 import updateEmployee from "./edit-employee";
 import updateUser from "./edit-user";
 import getAllEmployee from "./get-all-employee";
+import getAllUsers from "./get-all-users";
 import getEmployee from "./get-employee";
 import loginUser from "./login";
 import signUpUser from "./signup";
@@ -17,5 +18,6 @@ export default [
     updateEmployee,
     removeEmployees,
     updateUser,
-    getUser
+    getUser,
+    getAllUsers
 ]

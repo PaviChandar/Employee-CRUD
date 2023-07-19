@@ -5,7 +5,7 @@ export const localStorageKey = (value: string) => {
 }
 
 export const decodeTokenValue = () => {
-    let token: string, decodeToken: { username:'', email: '' }
+    let token: string, decodeToken: { username:'', email: '', Id:0 }
 
     token = JSON.stringify(localStorageKey("token"))
     decodeToken = jwtDecode(token)

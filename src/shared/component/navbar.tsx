@@ -2,7 +2,7 @@ import { Button } from "@mui/material"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 
-import { decodeTokenValue, removeToken } from "../storage/token"
+import { decodeTokenValue, localStorageKey, removeToken } from "../storage/token"
 
 const Navbar = () => {
 
@@ -12,7 +12,7 @@ const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     useEffect(() => {
-        if(localStorage.getItem("token")) {
+        if(localStorageKey("token")) {
             setIsLoggedIn(true)
         }
     },[])

@@ -15,7 +15,7 @@ interface State {
 
 const GetAllEmployee = () => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate()  
     const dispatch = useDispatch()
     const { t } = useTranslation()
 

@@ -17,3 +17,7 @@ export const viewUser = (id: number) => {
 export const userUpdate = (user: IUserInput, id: number) => {
     return axiosInstance.put(`/user/${id}`, user)
 }
+
+export const getUsers = () => {
+    return axiosInstance.get('/users')
+}

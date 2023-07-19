@@ -1,6 +1,8 @@
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
+import "../../assets/header.scss"
+
 const Header = () => {
     const { i18n } = useTranslation()
 

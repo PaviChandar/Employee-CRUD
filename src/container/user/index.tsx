@@ -1,4 +1,6 @@
 import { IUserInput } from "../../shared/interface/user.interface"
+import { store } from "../../store"
+import getAllUsers from "../../store/logic/get-all-users"
 
 export const loginUser = (user: IUserInput) => {
     return ({ type: 'LOGIN_REQUEST', payload: user })
@@ -19,4 +21,8 @@ export const editUser = (user: IUserInput) => {
 export const viewUser = (id: number) => {
     console.log("id in index : ", id)
     return ({ type: 'GET_SINGLE_USER', payload: id })
+}
+
+export const getAllUser = () => {
+    return store.dispatch(getAllUsers)
 }

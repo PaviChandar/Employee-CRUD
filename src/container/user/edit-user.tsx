@@ -1,9 +1,10 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { viewUser } from ".";
 
+import { editUser, viewUser } from ".";
 import EditUserComponent from "../../components/user/edit-user";
+import { IUserInput } from "../../shared/interface/user.interface";
 import withRouter from "../withRouter";
 
 class EditUser extends Component<any,any> {
@@ -15,11 +16,12 @@ class EditUser extends Component<any,any> {
                 email:'',
                 password:''
             },
-            editState:{},
+            // editState:{},
             success: false,
         }
 
         this.handleChange = this.handleChange.bind(this)
+        this.updateHandler = this.updateHandler.bind(this)
     }
 
     componentDidMount() {
@@ -45,33 +47,34 @@ class EditUser extends Component<any,any> {
         }))
     }
 
+    updateHandler = () => {
+        this.props.editUser(this.state.credentials)
+    }
+
     render() {
-        const { username, email, password, data } = this.props
+        // const { username, email, password, data } = this.props
 
         return (
             <>
-               {console.log("userdata whole : ", data)}
-               {console.log("indiv data : ", username,email,password)}
                 <h1>Edit user container</h1>
                 <EditUserComponent 
-                handleChange={this.handleChange} 
-                stateValue={this.state.data}
-                 />
+                    handleChange={this.handleChange} 
+                    stateValue={this.state.data}
+                    updateHandler={this.updateHandler}
+                />
             </>
         )
     }
 }
 
 const mapStateToProps = (state: any) => ({
-    data: state.userData.user,
-    username: state.userData.user.username,
-    email: state.userData.user.email,
-    password: state.userData.user.userpassword
+    data: state.userData.user
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        viewUser : (id: number) => dispatch(viewUser(id))
+        viewUser : (id: number) => dispatch(viewUser(id)),
+        editUser: (credentials: IUserInput) => dispatch(editUser(credentials))
     }
 }
 
