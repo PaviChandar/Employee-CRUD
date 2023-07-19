@@ -12,8 +12,8 @@ const Header = () => {
 
     return (
         <header>
-            <Button onClick={() => handleClick("en")} className="english" >English</Button>
-            <Button onClick={() => handleClick("ta")} className="tamil" >Tamil</Button>
+            <button onClick={() => handleClick("en")} className="english" >English</button>
+            <button onClick={() => handleClick("ta")} className="tamil" >Tamil</button>
         </header>
     )
 }

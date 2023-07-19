@@ -46,15 +46,15 @@ const Router = () => {
                 <Route path='/edit/:id' element={<EditUser />} />
 
                 <Route path='/admin' element= {
-                    <PrivateRoutes>
+                    // <PrivateRoutes>
                         <AdminHome />
-                    </PrivateRoutes>
+                    /* </PrivateRoutes> */
                     } >
 
                     <Route path='' element= {
-                        <PrivateRoutes>
+                        // <PrivateRoutes>
                             <Admin />
-                        </PrivateRoutes>
+                        // </PrivateRoutes>
                     } />
 
                     <Route path='create' element= {

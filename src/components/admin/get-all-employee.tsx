@@ -32,7 +32,6 @@ const GetAllEmployee = () => {
     return (
         <>
             <div>   
-                <h3>Retreiving all emps</h3>
                 <TableContainer>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
