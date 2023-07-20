@@ -1,0 +1,25 @@
+.updateInput {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 30px;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+.updateContainer {
+    margin-top: 70px;
+}
+
+.updateInputContainer {
+    margin-left: 650px;
+    // background-color: red;
+}
+
+.update {
+    text-align: center;
+}
+
+input[type="number"] {
+    height: 40px;
+}

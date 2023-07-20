@@ -63,7 +63,8 @@ const GetAllEmployee = () => {
                     </Table>
                 </TableContainer>
             </div>
-            <Button onClick={() => navigate('/admin/create')}>Add Employee</Button>
+            <Button sx={{ marginLeft:"700px", marginTop:"20px" }}
+                onClick={() => navigate('/admin/create')}>Add Employee</Button>
         </>
     )
 }

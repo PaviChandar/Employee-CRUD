@@ -1,0 +1,19 @@
+.logout {
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.username {
+    position: absolute;
+    top: -5px;
+    right: 30px;
+    font-weight: bold;
+}

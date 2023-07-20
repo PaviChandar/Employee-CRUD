@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 
 import { decodeTokenValue, localStorageKey, removeToken } from "../storage/token"
+import "../../assets/navbar.scss"
 
 const Navbar = () => {
 
@@ -28,8 +29,8 @@ const Navbar = () => {
             {
                 isLoggedIn ?
                 <>
-                    <h4>Hello, { decodeValue.username }</h4>
-                    <Button onClick={handleLogout}>Logout</Button>
+                    <h4 className="username" >Hello, { decodeValue.username }</h4>
+                    <button onClick={handleLogout} className="logout" >Logout</button>
                 </> :
                 <>
                     <Button onClick={() => navigate('/login')} >Login</Button>

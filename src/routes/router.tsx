@@ -31,30 +31,30 @@ const Router = () => {
 
     ValidateSession() 
 
-    return (
+    return (    
         <>
             <Routes>
                 <Route path='/' element={<Login />} />
                 <Route path='/signup' element={<SignUp />} />
 
                 <Route path='/home' element= {
-                    // <ProtectedRoutes>
+                    <ProtectedRoutes>
                         <UserHome />
-                    // </ProtectedRoutes>
+                    </ProtectedRoutes>
                 } />
 
                 <Route path='/edit/:id' element={<EditUser />} />
 
                 <Route path='/admin' element= {
-                    // <PrivateRoutes>
+                    <PrivateRoutes>
                         <AdminHome />
-                    /* </PrivateRoutes> */
+                    </PrivateRoutes>
                     } >
 
                     <Route path='' element= {
-                        // <PrivateRoutes>
+                        <PrivateRoutes>
                             <Admin />
-                        // </PrivateRoutes>
+                        </PrivateRoutes>
                     } />
 
                     <Route path='create' element= {
@@ -66,7 +66,7 @@ const Router = () => {
                     <Route path='edit/:id' element= {
                         <PrivateRoutes>
                             <EditEmployee />
-                        </PrivateRoutes>
+                        </PrivateRoutes> 
                     }
                     />
                 </Route>

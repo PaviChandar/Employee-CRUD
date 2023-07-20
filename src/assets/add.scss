@@ -1,0 +1,24 @@
+.addInput {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 30px;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+.addContainer {
+    margin-top: 70px;
+}
+
+.addInputContainer {
+    margin-left: 650px;
+}
+
+.add {
+    text-align: center;
+}
+
+input[type="number"] {
+    height: 40px;
+}

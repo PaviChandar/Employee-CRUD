@@ -1,6 +1,25 @@
 .english {
-    margin-right: 0;
-    background-color: pink;
-    margin-top: 30px;
+    background-color: black;
+    color: white;
     padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 220px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tamil {
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 160px;
+    text-align: center;
+    cursor: pointer;
 }

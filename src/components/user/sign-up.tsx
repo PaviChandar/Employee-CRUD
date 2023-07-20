@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 
-import "../../assets/sign-up.css"
+import "../../assets/sign-up.scss"
 import { IUserInput } from "../../shared/interface/user.interface"
 
 type SignProps = {

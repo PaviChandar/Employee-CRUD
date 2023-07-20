@@ -1,9 +1,7 @@
 import { Button } from '@mui/material'
-import { useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 
-import "../../assets/login.css"
+import "../../assets/login.scss"
 import { IUserInput } from '../../shared/interface/user.interface'
 
 type LoginProps = {
