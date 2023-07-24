@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 import { deleteEmployee, getAllEmployees } from "../../container/employee"
-import { IEmployee, IEmployeeInput, IEmployeeState } from "../../shared/interface/employee.interface";
+import { IEmployee, IEmployeeInput, IEmployees, IEmployeeState } from "../../shared/interface/employee.interface";
 
 interface State {
     employeeData: IEmployee
@@ -23,7 +23,7 @@ const GetAllEmployee = () => {
         getAllEmployees()
     }, [])
 
-    const employees = useSelector((state: any) => state.employeeData.employees)
+    const employees = useSelector((state: IEmployees) => state.employeeData.employees)
 
     const handleDelete = (id: number) => {
         dispatch(deleteEmployee(id))

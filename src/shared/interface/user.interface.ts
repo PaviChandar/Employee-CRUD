@@ -16,13 +16,13 @@ export interface IUserState {
 }
 
 export interface IUser {
-    userData: IUserInput; 
+    userData: IUserInput & IUserState 
     type: string;
     payload: IUserInput
 }
 
 export interface IUsers {
-    userData: IUserInput;
+    userData: IUserInput & IUserState 
     type: string;
     payload: IUserInput[]
 }

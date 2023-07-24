@@ -28,7 +28,6 @@ const userReducer = (state: IUserState= initialState, action: IUserType) => {
                 user: action.payload
             }
         case VIEW_USER:
-            console.log("payload in red : ", action.payload)
             return {
                 ...state,
                 user: action.payload

@@ -13,6 +13,7 @@ const UserHome = () => {
  
     const navigate = useNavigate()
     const params = decodeTokenValue()
+    console.log("params : ", params)
 
     const user = useSelector((state: any) => state.userData.user)
 

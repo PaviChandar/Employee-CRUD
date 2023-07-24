@@ -1,16 +1,12 @@
 import Button from "@mui/material/Button"
 import { useSelector } from "react-redux"
 
-import { IUserInput } from "../../shared/interface/user.interface"
-
 interface EditProps {
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void
-    stateValue: IUserInput  
     updateHandler: () => void 
 }
 
-const EditUserComponent: React.FC<EditProps> = ({ handleChange, stateValue, updateHandler }) => {
-    console.log("stateval : ", stateValue)
+const EditUserComponent: React.FC<EditProps> = ({ handleChange, updateHandler }) => {
 
     const user = useSelector((state: any) => state.userData.user)
 

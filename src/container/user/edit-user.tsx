@@ -16,7 +16,6 @@ class EditUser extends Component<any,any> {
                 email:'',
                 password:''
             },
-            // editState:{},
             success: false,
         }
 
@@ -52,16 +51,12 @@ class EditUser extends Component<any,any> {
     }
 
     render() {
-        // const { username, email, password, data } = this.props
 
         return (
             <>
                 <h1>Edit user container</h1>
                 <EditUserComponent 
-                    handleChange={this.handleChange} 
-                    stateValue={this.state.data}
-                    updateHandler={this.updateHandler}
-                />
+                    handleChange={this.handleChange}  updateHandler={this.updateHandler} />
             </>
         )
     }

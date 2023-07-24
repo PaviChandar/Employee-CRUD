@@ -5,7 +5,7 @@ import { Dispatch } from "redux";
 
 import { getSingleEmployee, updateEmployee } from ".";
 import EditComponent from "../../components/admin/update";
-import { IEmployeeInput } from "../../shared/interface/employee.interface";
+import { IEmployeeInput, IEmployee, IEmployeeState } from "../../shared/interface/employee.interface";
 import { validateEmployee } from "../../shared/validation/validate-employee";
 import withRouter from "../withRouter";
 
@@ -13,12 +13,10 @@ interface State {
     success: boolean
     errors: any
     editState: IEmployeeInput
-    successMessage: string | null
-    errorMessage: string | null
 }
 
 class EditEmployee extends Component<any,State> {
-    constructor(props: any) {
+    constructor(props: Object) {
         super(props)
         this.state = {
             success: false,
@@ -29,9 +27,7 @@ class EditEmployee extends Component<any,State> {
                 age:0,
                 city:'',
                 salary:0
-            },
-            successMessage: "",
-            errorMessage:""
+            }
         }
 
         this.editHandler = this.editHandler.bind(this)
@@ -43,7 +39,7 @@ class EditEmployee extends Component<any,State> {
         this.props.getSingleEmployee(id)
     }
 
-    componentDidUpdate(prevProps: { data: any }, prevState: any) {
+    componentDidUpdate(prevProps: { data: IEmployeeInput }, prevState: any) {
         if (prevProps.data !== this.props.data) {
             this.setState({ editState: this.props.data })
         }
@@ -52,7 +48,7 @@ class EditEmployee extends Component<any,State> {
     handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target
 
-        this.setState((prev: { editState: any; }) => ({
+        this.setState((prev: { editState: any }) => ({
             ...(prev.editState = {
               ...prev.editState,
               [name]: value,

@@ -1,4 +1,4 @@
-import { Routes, Route, PathRouteProps, IndexRouteProps, useNavigate, Navigate } from "react-router-dom"
+import { Routes, Route, PathRouteProps, IndexRouteProps, Navigate } from "react-router-dom"
 
 import Admin from "../components/admin/home"
 import AdminHome from "../components/admin/admin"
@@ -12,6 +12,7 @@ import { localStorageKey } from "../shared/storage/token"
 import jwtDecode from "jwt-decode"
 import { useSelector } from "react-redux"
 import EditUser from "../container/user/edit-user"
+import { IUser } from "../shared/interface/user.interface"
 
 type Props = {
     children: PathRouteProps | IndexRouteProps |any
@@ -19,7 +20,7 @@ type Props = {
 
 const Router = () => {
 
-    const loginValue = useSelector((state: any) => state.userData.login)
+    const loginValue = useSelector((state: IUser) => state.userData.login)
 
     const ProtectedRoutes = ({ children }: Props) => {
         return loginValue ? children : <Navigate to='/admin' />
@@ -38,9 +39,9 @@ const Router = () => {
                 <Route path='/signup' element={<SignUp />} />
 
                 <Route path='/home' element= {
-                    <ProtectedRoutes>
+                    // <ProtectedRoutes>
                         <UserHome />
-                    </ProtectedRoutes>
+                    // </ProtectedRoutes>
                 } />
 
                 <Route path='/edit/:id' element={<EditUser />} />

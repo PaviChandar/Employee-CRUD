@@ -5,13 +5,14 @@ import { Dispatch } from "redux";
 
 import { addEmployee } from ".";
 import AddNewEmployee from "../../components/admin/add";
-import { IEmployeeInput } from "../../shared/interface/employee.interface";
+import { IEmployeeInput, IEmployeeState } from "../../shared/interface/employee.interface";
 import { validateEmployee } from "../../shared/validation/validate-employee";
 
 interface State {
     credentials: IEmployeeInput
     success: boolean
     errors: any
+    employeeData?: IEmployeeInput & IEmployeeState | any
     successMessage: string | null
     errorMessage: string | null
 }
@@ -30,6 +31,7 @@ class AddEmployee extends Component<any, State> {
             },
             success: false,
             errors: {},
+            employeeData: {},
             successMessage:"",
             errorMessage:"",
         }
@@ -84,7 +86,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     }
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: State) => ({
     successMessage: state.employeeData.successMessage,
     errorMessage: state.employeeData.errorMessage
 })
