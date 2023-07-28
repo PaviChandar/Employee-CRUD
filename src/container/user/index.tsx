@@ -19,7 +19,6 @@ export const editUser = (user: IUserInput) => {
 }
 
 export const viewUser = (id: number) => {
-    console.log("id in index : ", id)
     return ({ type: 'GET_SINGLE_USER', payload: id })
 }
 

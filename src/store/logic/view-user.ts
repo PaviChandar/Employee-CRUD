@@ -7,10 +7,8 @@ const getUser = createLogic({
     type: 'GET_SINGLE_USER',
     process ({ action }: any, dispatch, done) {
         const id = action.payload
-        console.log("id in logic : ", id)
         viewUser(id)
             .then(function (response) {
-                console.log("res data : ", response.data)
                 dispatch(getSingleUser(response.data))
                 done()
             })

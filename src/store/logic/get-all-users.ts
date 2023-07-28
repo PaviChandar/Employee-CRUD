@@ -8,7 +8,6 @@ const getAllUsers: any =  createLogic({
     async process({ action }, dispatch, done) {
         getUsers()
             .then(function (response) {
-                console.log("data from all users : ", response.data.data)
                 dispatch(retreiveAllUser(response.data.data))
                 done()
             })

@@ -10,7 +10,6 @@ const updateUser = createLogic({
         const user = action.payload
         userUpdate(user,id)
             .then(function (response) {
-                console.log("res data  : ", response.data)
                 dispatch(upgradeUser(response.data))
                 done()
             })

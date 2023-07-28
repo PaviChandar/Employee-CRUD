@@ -25,7 +25,6 @@ class EditUser extends Component<any,any> {
 
     componentDidMount() {
         const id = this.props.params.id
-        console.log("id in compmount : ", id)
         this.props.viewUser(id)
     }
 

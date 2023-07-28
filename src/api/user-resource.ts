@@ -10,7 +10,6 @@ export const userRegister = (user: IUserInput) => {
 }
 
 export const viewUser = (id: number) => {
-    console.log("id in axios : ", id)
     return axiosInstance.get(`/user/${id}`)
 }
 
