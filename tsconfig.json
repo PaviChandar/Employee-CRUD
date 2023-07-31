@@ -22,6 +22,7 @@
   },
   "include": [
     "src",
-    "*.scss"
+    "*.scss",
+    "src/components/user/__test__"
   ]
 }
