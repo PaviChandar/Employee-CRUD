@@ -1,5 +1,5 @@
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -18,6 +18,7 @@ const GetAllEmployee = () => {
     const navigate = useNavigate()  
     const dispatch = useDispatch()
     const { t } = useTranslation()
+    const [success, setSuccess] = useState(false)
 
     useEffect(() => {
         getAllEmployees()
@@ -27,7 +28,16 @@ const GetAllEmployee = () => {
 
     const handleDelete = (id: number) => {
         dispatch(deleteEmployee(id))
+        if(window.confirm("Are you sure to delete employee?")) {
+            setSuccess(true)
+        }
     }
+
+    useEffect(() => {
+        if(success) {
+            alert("Employee deleted successfully!")
+        }
+    })
 
     return (
         <>
