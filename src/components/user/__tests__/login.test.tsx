@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 
-import 'jsdom-global/register';
+// import 'jsdom-global/register';
 import Login from "../../../container/user/login";
 
 // import Adapter from 'enzyme-adapter-react-15'
