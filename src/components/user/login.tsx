@@ -19,12 +19,12 @@ const LoginComponent: React.FC<LoginProps> = ({ handleChange, loginHandler, some
         <div className="loginContainer">
             <form className="loginInputContainer">
                 <div className="loginInput">
-                    <input type="text" placeholder="email" name="email" onChange={(e) => handleChange(e)} value={someState.email} />
-                    <span className='error' >{errors.email}</span>
+                    <input data-testid="login-email-input" type="text" placeholder="email" name="email" onChange={(e) => handleChange(e)} value={someState.email} />
+                    <span data-testid="login-email-error" className='error' >{errors.email}</span>
                 </div>
                 <div className="loginInput">
-                    <input type="password" placeholder="password" name="password" onChange={(e) => handleChange(e)} value={someState.password} />
-                    <span className='error'>{errors.password}</span>
+                    <input data-testid="login-password-input" type="password" placeholder="password" name="password" onChange={(e) => handleChange(e)} value={someState.password} />
+                    <span data-testid="login-password-error" className='error'>{errors.password}</span>
                 </div>
             </form>
             <Button color='secondary' sx={{backgroundColor: "ButtonHighlight"}}
@@ -32,7 +32,7 @@ const LoginComponent: React.FC<LoginProps> = ({ handleChange, loginHandler, some
             >
                 Login
             </Button>
-            <h3>If not an user, please sign-up</h3>
+            <h3 data-testid="login-h3-tag" >If not an user, please sign-up</h3>
             <Button color='secondary' sx={{backgroundColor: "ButtonShadow"}}
                 onClick={() => navigate('/signup')} 
             >

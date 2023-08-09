@@ -1,12 +1,8 @@
 import { useSelector } from "react-redux"
 import { Button } from "@mui/material"
 
-import Header from "../../shared/component/header"
 import Navbar from "../../shared/component/navbar"
-import { useDispatch } from "react-redux"
-import { getAllUser, viewUser } from "../../container/user"
-import { useNavigate, useParams } from "react-router-dom"
-import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { decodeTokenValue } from "../../shared/storage/token"
 
 const UserHome = () => {

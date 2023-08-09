@@ -6,12 +6,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 import { deleteEmployee, getAllEmployees } from "../../container/employee"
-import { IEmployee, IEmployeeInput, IEmployees, IEmployeeState } from "../../shared/interface/employee.interface";
-
-interface State {
-    employeeData: IEmployee
-    state: IEmployeeState & IEmployee
-}
+import { IEmployeeInput, IEmployees } from "../../shared/interface/employee.interface";
 
 const GetAllEmployee = () => {
 

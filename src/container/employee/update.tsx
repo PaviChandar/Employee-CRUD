@@ -5,7 +5,7 @@ import { Dispatch } from "redux";
 
 import { getSingleEmployee, updateEmployee } from ".";
 import EditComponent from "../../components/admin/update";
-import { IEmployeeInput, IEmployee, IEmployeeState } from "../../shared/interface/employee.interface";
+import { IEmployeeInput } from "../../shared/interface/employee.interface";
 import { validateEmployee } from "../../shared/validation/validate-employee";
 import withRouter from "../withRouter";
 

@@ -1,7 +1,7 @@
 import { createLogic } from "redux-logic";
-import { getEmployees } from "../../api/admin-resource";
+
 import { getUsers } from "../../api/user-resource";
-import { retreiveAllEmployee, retreiveAllUser } from "../action/action";
+import { retreiveAllUser } from "../action/action";
 
 const getAllUsers: any =  createLogic({
     type: 'GET_ALL_USER',
