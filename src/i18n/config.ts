@@ -15,7 +15,10 @@ i18next
         },
         ns: ['translations'],
         keySeparator: false,
-        defaultNS: 'translations'
+        defaultNS: 'translations',
+        react: { 
+            useSuspense: false 
+        }
     })
     i18next.languages = ['en', 'ta']
 

@@ -16,6 +16,7 @@ const GetAllEmployee = () => {
     const [success, setSuccess] = useState(false)
 
     useEffect(() => {
+        console.log("inside getall")
         getAllEmployees()
     }, [])
 
@@ -32,7 +33,7 @@ const GetAllEmployee = () => {
         if(success) {
             alert("Employee deleted successfully!")
         }
-    })
+    },[])
 
     return (
         <>

@@ -1,25 +1,27 @@
-import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { I18nextProvider } from 'react-i18next';
+// import { createRoot }  from 'react-dom';
+import ReactDOM from "react-dom"
 
 import { store } from './store';
 import App from './App';
 import i18next from './i18n/config';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-)
+// const root = createRoot(
+//   document.getElementById('root') as HTMLElement
+// )
 
-root.render(
+ReactDOM.render(
   <BrowserRouter>
     <I18nextProvider i18n={i18next} >
       <Provider store={store} >
         <App />
       </Provider>
     </I18nextProvider>
-  </BrowserRouter>
+  </BrowserRouter>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
