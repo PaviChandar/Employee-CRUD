@@ -2,16 +2,11 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { I18nextProvider } from 'react-i18next';
-// import { createRoot }  from 'react-dom';
 import ReactDOM from "react-dom"
 
 import { store } from './store';
 import App from './App';
 import i18next from './i18n/config';
-
-// const root = createRoot(
-//   document.getElementById('root') as HTMLElement
-// )
 
 ReactDOM.render(
   <BrowserRouter>

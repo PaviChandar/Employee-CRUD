@@ -19,7 +19,6 @@ type Props = {
 const Router = () => {
 
     const loginValue = useSelector((state: any) => state.userData.user.login)
-    console.log("login in route : ", loginValue)
 
     const ProtectedRoutes = ({ children }: Props) => {
         return loginValue ? children : <Navigate to='/admin' />
@@ -38,9 +37,9 @@ const Router = () => {
                 <Route path='/signup' element={<SignUp />} />
 
                 <Route path='/home' element= {
-                    // <ProtectedRoutes>
+                    <ProtectedRoutes>
                         <UserHome />
-                    // </ProtectedRoutes>
+                    </ProtectedRoutes>
                 } />
 
                 <Route path='/edit/:id' element={<EditUser />} />

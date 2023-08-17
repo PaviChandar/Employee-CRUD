@@ -4,9 +4,9 @@ import "@testing-library/jest-dom";
 
 import Login from "../../container/user/login";
 
-test("hiiiiiiiii", async() => {
+test("testing login component", async() => {
     render(
-        <Login />
+        <Login  />
     )
 
     expect(screen.getByTestId('login-email-input')).toBeInTheDocument()

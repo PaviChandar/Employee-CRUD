@@ -23,6 +23,5 @@
   "include": [
     "src",
     "*.scss",
-    "src/components/user/__test__"
   ]
 }
