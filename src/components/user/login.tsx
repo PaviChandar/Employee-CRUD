@@ -1,7 +1,7 @@
 import { Button } from '@mui/material'
-import { useNavigate } from 'react-router'
 
 import "../../assets/login.scss"
+import { handleNavigation } from '../../shared/component/navigation'
 import { IUserInput } from '../../shared/interface/user.interface'
 
 type LoginProps = {
@@ -11,20 +11,18 @@ type LoginProps = {
     errors: IUserInput
 }
 
-const LoginComponent: React.FC<LoginProps> = ({ handleChange, loginHandler, someState, errors }) => {
-
-    const navigate = useNavigate()
+function LoginComponent ({ handleChange, loginHandler, someState, errors }: LoginProps)  {
 
     return (
         <div className="loginContainer">
             <form className="loginInputContainer">
                 <div className="loginInput">
                     <input data-testid="login-email-input" type="text" placeholder="email" name="email" onChange={(e) => handleChange(e)} value={someState.email} />
-                    <span data-testid="login-email-error" className='error' >{errors.email}</span>
+                    <span data-testid="email-error" className='error' >{errors.email}</span>
                 </div>
                 <div className="loginInput">
                     <input data-testid="login-password-input" type="password" placeholder="password" name="password" onChange={(e) => handleChange(e)} value={someState.password} />
-                    <span data-testid="login-password-error" className='error'>{errors.password}</span>
+                    <span data-testid="password-error" className='error'>{errors.password}</span>
                 </div>
             </form>
             <Button color='secondary' sx={{backgroundColor: "ButtonHighlight"}}
@@ -33,8 +31,8 @@ const LoginComponent: React.FC<LoginProps> = ({ handleChange, loginHandler, some
                 Login
             </Button>
             <h3 data-testid="login-h3-tag" >If not an user, please sign-up</h3>
-            <Button color='secondary' sx={{backgroundColor: "ButtonShadow"}}
-                onClick={() => navigate('/signup')} 
+            <Button color='secondary' data-testid="signup-button" sx={{backgroundColor: "ButtonShadow"}}
+                onClick={() => handleNavigation('/signup')} 
             >
                 SignUp
             </Button>

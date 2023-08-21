@@ -6,7 +6,7 @@ const Admin = () => {
 
     return (
         <>
-            <h1>Admin home</h1>
+            <h1 >Admin home</h1>
             <Header />
             <Navbar />
             <GetAllEmployee />

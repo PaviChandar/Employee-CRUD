@@ -16,7 +16,6 @@ const GetAllEmployee = () => {
     const [success, setSuccess] = useState(false)
 
     useEffect(() => {
-        console.log("inside getall")
         getAllEmployees()
     }, [])
 
@@ -38,7 +37,7 @@ const GetAllEmployee = () => {
     return (
         <>
             <div> 
-                <h1 data-testid="get-all-main-tag" >All employee table</h1> 
+                <h1 data-testid="header-tag" >All employee table</h1> 
                 <TableContainer>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
@@ -49,21 +48,19 @@ const GetAllEmployee = () => {
                                 <TableCell>Salary</TableCell>
                             </TableRow>
                         </TableHead>
-                        <p data-testid="displaying-employees-tag" >This is the data from employees</p>
                         <TableBody>
                             {
                                 employees && employees.map((employee: IEmployeeInput) => (
                                     <TableRow key={employee.id}>
                                         <TableCell>{employee.name}</TableCell>
                                         <TableCell>{employee.age}</TableCell>
-                                        <p data-testid="displaying-name-tag" >{employee.name}</p>
                                         <TableCell>{employee.city}</TableCell>
                                         <TableCell>{employee.salary}</TableCell>
                                         <TableCell>
                                             <Button onClick={() => navigate(`/admin/edit/${employee.id}`)}>{t("update_button")}</Button>
                                         </TableCell>
                                         <TableCell>
-                                            <Button onClick={() => handleDelete(employee.id)} data-testid="get-all-button" >{t("delete_button")}</Button>
+                                            <Button onClick={() => handleDelete(employee.id)} >{t("delete_button")}</Button>
                                         </TableCell>
                                     </TableRow>                                    
                                 ))
@@ -73,7 +70,10 @@ const GetAllEmployee = () => {
                 </TableContainer>
             </div>
             <Button sx={{ marginLeft:"700px", marginTop:"20px" }}
-                onClick={() => navigate('/admin/create')}>Add Employee</Button>
+                onClick={() => navigate('/admin/create')}
+            >
+                Add Employee
+            </Button>
         </>
     )
 }

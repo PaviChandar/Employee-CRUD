@@ -74,7 +74,6 @@ class Login extends Component<any, State> {
                 <LoginComponent handleChange={this.handleChange} loginHandler={this.loginHandler} someState={this.state.credentials} errors={this.state.errors} />
                 {successMessage && <div>{successMessage}</div>}
                 {errorMessage && <div>{errorMessage}</div>}
-                {console.log("login val : ", login)}
                 {
                     login  !== null && (login ? <Navigate to='/admin'></Navigate> :  <Navigate to='/home'></Navigate>)
                 }

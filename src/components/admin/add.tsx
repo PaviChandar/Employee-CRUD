@@ -3,6 +3,7 @@ import { useNavigate } from "react-router"
 
 import { IEmployeeInput } from "../../shared/interface/employee.interface"
 import "../../assets/add.scss"
+import { handleNavigation } from "../../shared/component/navigation"
 
 interface AddProps {
     addHandler: () => void
@@ -12,7 +13,6 @@ interface AddProps {
 }
 
 const AddNewEmployee: React.FC<AddProps> = ({ addHandler, handleChange, stateValue, errors }) => {
-    const navigate = useNavigate()
 
     return (
         <div className="add">
@@ -20,32 +20,32 @@ const AddNewEmployee: React.FC<AddProps> = ({ addHandler, handleChange, stateVal
             <div className="addContainer" >
                 <form className="addInputContainer">
                     <div className="addInput">
-                        <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={stateValue.id} className="addId" />
-                        <span className="error" >{errors.id}</span>
+                        <input data-testid="add-id" type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={stateValue.id} className="addId" />
+                        <span data-testid="add-id-error" className="error" >{errors.id}</span>
                     </div>
                     <div className="addInput">
-                        <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={stateValue.name} />
-                        <span className="error">{errors.name}</span>
+                        <input data-testid="add-name" type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={stateValue.name} />
+                        <span data-testid="add-name-error" className="error">{errors.name}</span>
                     </div>
                     <div className="addInput">
-                        <input type="number" placeholder="age" name="age" onChange={(e) => handleChange(e)} value={stateValue.age} />
-                        <span className="error">{errors.age}</span>
+                        <input data-testid="add-age" type="number" placeholder="age" name="age" onChange={(e) => handleChange(e)} value={stateValue.age} />
+                        <span data-testid="add-age-error" className="error">{errors.age}</span>
                     </div>
                     <div className="addInput">
-                        <input type="text" placeholder="city" name="city" onChange={(e) => handleChange(e)} value={stateValue.city} />
-                        <span className="error">{errors.city}</span>
+                        <input data-testid="add-city" type="text" placeholder="city" name="city" onChange={(e) => handleChange(e)} value={stateValue.city} />
+                        <span data-testid="add-city-error" className="error">{errors.city}</span>
                     </div>
                     <div className="addInput">
-                        <input type="number" placeholder="salary" name="salary" onChange={(e) => handleChange(e)} value={stateValue.salary} />
-                        <span className="error">{errors.salary}</span>
+                        <input data-testid="add-salary" type="number" placeholder="salary" name="salary" onChange={(e) => handleChange(e)} value={stateValue.salary} />
+                        <span data-testid="add-salary-error" className="error">{errors.salary}</span>
                     </div>
                 </form>
             </div>
-            <Button variant="outlined" sx={{ marginLeft:"-20px" ,marginRight:"8px" }}
+            <Button data-testid="add-button" variant="outlined" sx={{ marginLeft:"-20px" ,marginRight:"8px" }}
               onClick={addHandler}>
                 Add
             </Button>
-            <Button variant="outlined" onClick={() => navigate('/admin')} >Go Back</Button>
+            <Button data-testid="add-back-button" variant="outlined" onClick={() => handleNavigation('/admin')} >Go Back</Button>
         </div>
     )
 }
